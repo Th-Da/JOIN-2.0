@@ -1,0 +1,18 @@
+.container {
+    margin: 10rem;
+    height: 50vh;
+}
+
+h5 {
+    font-size: 15rem;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.profil-img {
+ height: 50px;
+ border: 5px !important;
+}
