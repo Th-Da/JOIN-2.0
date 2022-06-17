@@ -1,18 +1,18 @@
 .container {
-    margin: 10rem;
-    height: 50vh;
-}
-
-h5 {
-    font-size: 15rem;
+    margin: 200px 15% 200px 15%;
 }
 
 .navbar {
     display: flex;
     flex-direction: column;
+    width: 150px;
+    height: 500px;
 }
 
 .profil-img {
  height: 50px;
- border: 5px !important;
+}
+
+.nav-items h5 {
+    cursor: pointer;
 }
