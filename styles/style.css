@@ -56,12 +56,3 @@
     height: 25px;
 
 }
-
-.footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 75px;
-    width:calc(100vw - 150px);
-    background-color: #4e95fd;
-}
