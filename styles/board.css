@@ -1,0 +1,22 @@
+.tasks-main-container {
+    display: flex;
+}
+
+.tasks-container {
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.tasks-headline-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+}
+
+.tasks-list-container {
+    background-color: lightblue;
+    height: 15rem;
+}
