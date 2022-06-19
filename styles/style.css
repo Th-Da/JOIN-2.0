@@ -2,18 +2,45 @@
     margin: 10rem;
     height: 50vh;
     display: flex;
+    margin: 200px 15% 200px 15%;
 }
 
-h5 {
-    font-size: 15rem;
-}
 
 .navbar {
     display: flex;
     flex-direction: column;
+    width: 150px;
+    height: 500px;
 }
 
 .profil-img {
- height: 50px;
- border: 5px !important;
+    height: 50px;
+}
+
+.nav-items h5 {
+    cursor: pointer;
+    margin: 20px 0;
+    padding-left: 35px;
+}
+
+.single-nav-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 150px;
+}
+
+.nav-items h5:hover {
+    color: #4e95fd;
+}
+
+.single-nav-item:hover .slected-nav-item {
+    background-color: #4e95fd;
+}
+
+.slected-nav-item {
+    width: 7px;
+    height: 25px;
+
 }
