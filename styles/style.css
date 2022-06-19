@@ -1,20 +1,27 @@
-.container {
-    margin: 10rem;
+.main-container {
     height: 50vh;
     display: flex;
-    margin: 200px 15% 200px 15%;
 }
 
 
 .navbar {
+    padding: 50px 0 !important;
     display: flex;
     flex-direction: column;
     width: 150px;
-    height: 500px;
+    height: 100vh;
 }
 
 .profil-img {
     height: 50px;
+    border: solid 2px;
+}
+
+.nav-items {
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .nav-items h5 {
