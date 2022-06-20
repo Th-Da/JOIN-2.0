@@ -56,3 +56,16 @@
     height: 25px;
 
 }
+
+.headline-container {
+    margin: 45px;
+}
+
+.headline-container h1 {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.join-phrase {
+    color: #1E3190;
+}
