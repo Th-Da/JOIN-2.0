@@ -33,6 +33,7 @@
     align-items: stretch;
     min-height: 82px;
     margin-bottom: 8px;
+    cursor: pointer;
 }
 
 .task-asssignedment {
@@ -46,6 +47,12 @@
     border-radius: 10px 0 0 10px;
 }
 
+.backlog-card-img-container {
+    margin-top: auto;
+    margin-bottom: auto;
+    max-width: 250px;
+}
+
 .backlog-card img {
     height: 50px;
     width: 50px;
@@ -54,12 +61,6 @@
     margin-left: 16px;
     margin-top: auto;
     margin-bottom: auto;
-}
-
-.person-data-container {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 16px;
 }
 
 .task-category {
@@ -74,8 +75,86 @@
     flex: 2;
 }
 
-@media (max-width:1000px) {
-    .task-asssignedment img {
-        display: none;
-    }
+#card-details-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(244, 243,251, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-details-content {
+    min-height: 380px;
+    min-width: 680px;
+    background-color: #F4F3FB;
+    border: 1px solid lightgray;
+    border-left: 5px solid yellow;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px -2px #787878;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+}
+
+.card-details-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-details-button-container img {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.card-details-content-left {
+    display: flex;
+    flex-direction: column;
+    margin-right: 24px;
+    padding-right: 24px;
+    border-right: 1px solid lightgray;
+}
+
+.card-details-content-left h2 {
+    margin-bottom: 30px;
+}
+.deadline-container {
+    margin-bottom: 40px;
+}
+
+.deadline-container span{
+margin-right: 44px;
+}
+
+.card-details-description {
+    width: 550px;
+}
+
+.assignee-container {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.assignee-container img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #B0B2B8;
+    margin-right: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.assignee-name {
+    font-weight: bold;
+}
+
+.assignee-email {
+    color: #1E3190;
 }
