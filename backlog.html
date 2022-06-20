@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <script src="scripts/backlog.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/backlog.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -90,7 +91,7 @@
                             Recusandae odio minima, culpa ea?</div>
                     </div>
                 </div>
-                <div id="card-details-container">
+                <div id="card-details-container" class="d-none fade-out">
                     <div class="card-details-content">
                         <div class="card-details-content-left">
                             <h2>Title of task</h2>
@@ -107,7 +108,7 @@
                         <div class="card-details-content-right">
                             <div class="card-details-button-container">
                                 <img src="img/arrow-32-24.png" alt="" title="Task Done">
-                                <img src="img/x-mark-24.png" alt="" title="Go Back">
+                                <img src="img/x-mark-24.png" alt="" title="Go Back" onclick="closeBacklogCardDetails()">
                             </div>
                             <div class="assignee-container">
                                 <img src="img/Profile-Pic-Tobi.PNG" alt="">
