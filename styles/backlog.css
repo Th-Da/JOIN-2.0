@@ -1,0 +1,80 @@
+.backlog-container {
+    width: 100%;
+}
+
+.backlog-content-container {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.backlog-head {
+    display: flex;
+    justify-content: space-between;
+    width: inherit;
+    color: #1E3190;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+.backlog-head div:nth-child(even) {
+    flex: 1;
+}
+
+.backlog-head div:nth-child(odd) {
+    flex: 2;
+}
+
+.backlog-card {
+    background-color: #F4F3FB;
+    border-radius: 10px;
+    display: flex;
+    align-items: stretch;
+    min-height: 82px;
+    margin-bottom: 8px;
+}
+
+.task-asssignedment {
+    display: flex;
+    flex: 2;
+}
+
+.task-urgency {
+    background-color: yellow;
+    width: 10px;
+    border-radius: 10px 0 0 10px;
+}
+
+.backlog-card img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #B0B2B8;
+    margin-left: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.person-data-container {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 16px;
+}
+
+.task-category {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex: 1;
+}
+
+.task-description {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex: 2;
+}
+
+@media (max-width:1000px) {
+    .task-asssignedment img {
+        display: none;
+    }
+}
