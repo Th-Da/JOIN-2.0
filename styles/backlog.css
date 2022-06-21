@@ -35,6 +35,11 @@
     min-height: 82px;
     margin-bottom: 8px;
     cursor: pointer;
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.backlog-card:hover {
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1) ; 
 }
 
 .task-asssignedment {
