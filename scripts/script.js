@@ -1,3 +1,8 @@
+async function init() {
+    await includeHTML();
+    
+}
+
 // stops event propagation
 function stopPropagation(event) {
     event.stopPropagation();

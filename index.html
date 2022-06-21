@@ -8,13 +8,14 @@
     <title>Document</title>
 
     <script src="scripts/script.js"></script>
+    <script src="scripts/board.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/board.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
-<body onload="init()">
+<body onload="initBoard()">
 
     <div class="main-container" id="mainContainer">
         <div w3-include-html="./templates/navbar.html"></div>
@@ -25,25 +26,8 @@
                 <div class="tasks-headline-container">
                     <h5>TO DO</h5>
                 </div>
-                <div class="tasks-list-container">
-                    <div class="task-card"  onclick="openCardDetails()">
-                        <div class="task-card-headline">Task Title</div>
-                        <span><b>Due Date:</b> 27.8.22</span>
-                        <div class="collaborators-container">
-                            <img src="img/sir-cow.png" alt="">
-                            <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                            <img src="img/blank_profil.png" alt="">
-                        </div>
-                    </div>
-                    <div class="task-card"  onclick="openCardDetails()">
-                        <div class="task-card-headline">Task Title</div>
-                        <span><b>Due Date:</b> 27.8.22</span>
-                        <div class="collaborators-container">
-                            <img src="img/sir-cow.png" alt="">
-                            <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                            <img src="img/blank_profil.png" alt="">
-                        </div>
-                    </div>
+                <div class="tasks-list-container" id="todo-list">
+                    
                 </div>
             </div>
         
