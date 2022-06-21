@@ -5,7 +5,7 @@ body {
 .fade-out {
     opacity: 0 !important;
     transition: opacity 0.5s ease-in-out !important;
-}  
+}
 
 .main-container {
     /* height: 50vh; */
@@ -19,9 +19,10 @@ body {
     width: 150px;
     height: 100vh;
     position: fixed !important;
+    background-color: #1E3190;
 }
 
-.navbar-hr{
+.navbar-hr {
     width: 90px;
     margin-left: 30px;
 }
@@ -31,25 +32,20 @@ body {
     border: solid 2px;
 }
 
-.nav-items {
-    height: 550px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.nav-items h5 {
-    cursor: pointer;
-    margin: 20px 0;
-    padding-left: 35px;
-}
-
 .single-nav-item {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     width: 150px;
+}
+
+.single-nav-item a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 15px 0;
+    padding-left: 35px;
 }
 
 .nav-items h5:hover {
@@ -88,7 +84,7 @@ body {
     right: 0;
     bottom: 0;
     top: 0;
-    background-color: rgba(244, 243,251, 0.5);
+    background-color: rgba(244, 243, 251, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,12 +128,13 @@ body {
 .card-details-content-left h2 {
     margin-bottom: 30px;
 }
+
 .deadline-container {
     margin-bottom: 40px;
 }
 
-.deadline-container span{
-margin-right: 44px;
+.deadline-container span {
+    margin-right: 44px;
 }
 
 .card-details-description {
@@ -167,30 +164,47 @@ margin-right: 44px;
     color: #1E3190;
 }
 
+
+@media (max-width: 1024px) {}
+
+
 /* fonts */
 /* pt-sans-regular - latin */
 @font-face {
     font-family: 'PT Sans';
     font-style: normal;
     font-weight: 400;
-    src: url('fonts/pt-sans-v17-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('fonts/pt-sans-v17-latin-regular.eot');
+    /* IE9 Compat Modes */
     src: local(''),
-         url('fonts/pt-sans-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('fonts/pt-sans-v17-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-         url('fonts/pt-sans-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
-         url('fonts/pt-sans-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-         url('fonts/pt-sans-v17-latin-regular.svg#PTSans') format('svg'); /* Legacy iOS */
-  }
-  /* pt-sans-italic - latin */
-  @font-face {
+        url('fonts/pt-sans-v17-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('fonts/pt-sans-v17-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('fonts/pt-sans-v17-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('fonts/pt-sans-v17-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('fonts/pt-sans-v17-latin-regular.svg#PTSans') format('svg');
+    /* Legacy iOS */
+}
+
+/* pt-sans-italic - latin */
+@font-face {
     font-family: 'PT Sans';
     font-style: italic;
     font-weight: 400;
-    src: url('fonts/pt-sans-v17-latin-italic.eot'); /* IE9 Compat Modes */
+    src: url('fonts/pt-sans-v17-latin-italic.eot');
+    /* IE9 Compat Modes */
     src: local(''),
-         url('fonts/pt-sans-v17-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('fonts/pt-sans-v17-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
-         url('fonts/pt-sans-v17-latin-italic.woff') format('woff'), /* Modern Browsers */
-         url('fonts/pt-sans-v17-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
-         url('fonts/pt-sans-v17-latin-italic.svg#PTSans') format('svg'); /* Legacy iOS */
-  }
+        url('fonts/pt-sans-v17-latin-italic.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('fonts/pt-sans-v17-latin-italic.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('fonts/pt-sans-v17-latin-italic.woff') format('woff'),
+        /* Modern Browsers */
+        url('fonts/pt-sans-v17-latin-italic.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('fonts/pt-sans-v17-latin-italic.svg#PTSans') format('svg');
+    /* Legacy iOS */
+}
