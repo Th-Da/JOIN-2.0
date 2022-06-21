@@ -3,12 +3,8 @@
     justify-content: space-evenly;
     height: 100vh;
     width: 100%;
-<<<<<<< HEAD
-    margin-left: 150px;
-=======
     margin-left: 160px;
     margin-right: 10px;
->>>>>>> ede8320fd056a5dd35dc38a3c62611dc84b2e4ba
 }
 
 .tasks-container {
@@ -27,9 +23,6 @@
 
 .tasks-list-container {
     background-color: #F4F3FB;
-<<<<<<< HEAD
-    height: 90%;
-=======
     height: 100%;
     margin-bottom: 24px;
 }
@@ -70,5 +63,4 @@
     border: 1px solid lightgray;
     margin-right: 8px;
     margin-bottom: 8px;
->>>>>>> ede8320fd056a5dd35dc38a3c62611dc84b2e4ba
 }
