@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <script src="scripts/script.js"></script>
+    <script src="scripts/backlog.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/backlog.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,10 +30,9 @@
                     <div>Category</div>
                     <div>Details</div>
                 </div>
-                <div id="backlog-cards" onclick="openBacklogCardDetails()">
-                    <div class="backlog-card">
+                <div id="backlog-cards">
+                    <div class="backlog-card"  onclick="openCardDetails()">
                         <div class="task-asssignedment">
-                            <div class="task-urgency"></div>
                             <div class="backlog-card-img-container">
                                 <img src="img/Profile-Pic-Tobi.PNG" alt="">
                                 <img src="img/sir-cow.png" alt="">
@@ -41,9 +42,8 @@
                         <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Recusandae odio minima, culpa ea?</div>
                     </div>
-                    <div class="backlog-card">
+                    <div class="backlog-card"  onclick="openCardDetails()">
                         <div class="task-asssignedment">
-                            <div class="task-urgency"></div>
                             <div class="backlog-card-img-container">
                                 <img src="img/Profile-Pic-Tobi.PNG" alt="">
                                 <img src="img/sir-cow.png" alt="">
@@ -53,9 +53,8 @@
                         <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Recusandae odio minima, culpa ea?</div>
                     </div>
-                    <div class="backlog-card">
+                    <div class="backlog-card"  onclick="openCardDetails()">
                         <div class="task-asssignedment">
-                            <div class="task-urgency"></div>
                             <div class="backlog-card-img-container">
                                 <img src="img/Profile-Pic-Tobi.PNG" alt="">
                                 <img src="img/sir-cow.png" alt="">
@@ -65,9 +64,8 @@
                         <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Recusandae odio minima, culpa ea?</div>
                     </div>
-                    <div class="backlog-card">
+                    <div class="backlog-card"  onclick="openCardDetails()">
                         <div class="task-asssignedment">
-                            <div class="task-urgency"></div>
                             <div class="backlog-card-img-container">
                                 <img src="img/Profile-Pic-Tobi.PNG" alt="">
                                 <img src="img/sir-cow.png" alt="">
@@ -77,9 +75,8 @@
                         <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Recusandae odio minima, culpa ea?</div>
                     </div>
-                    <div class="backlog-card">
+                    <div class="backlog-card"  onclick="openCardDetails()">
                         <div class="task-asssignedment">
-                            <div class="task-urgency"></div>
                             <div class="backlog-card-img-container">
                                 <img src="img/Profile-Pic-Tobi.PNG" alt="">
                                 <img src="img/sir-cow.png" alt="">
@@ -90,8 +87,8 @@
                             Recusandae odio minima, culpa ea?</div>
                     </div>
                 </div>
-                <div id="card-details-container">
-                    <div class="card-details-content">
+                <div id="card-details-container" class="d-none fade-out" onclick="closeCardDetails()">
+                    <div class="card-details-content" onclick="stopPropagation(event)">
                         <div class="card-details-content-left">
                             <h2>Title of task</h2>
                             <span><b>Urgency:</b> Medium</span>
@@ -107,7 +104,7 @@
                         <div class="card-details-content-right">
                             <div class="card-details-button-container">
                                 <img src="img/arrow-32-24.png" alt="" title="Task Done">
-                                <img src="img/x-mark-24.png" alt="" title="Go Back">
+                                <img src="img/x-mark-24.png" alt="" title="Go Back" onclick="closeCardDetails()">
                             </div>
                             <div class="assignee-container">
                                 <img src="img/Profile-Pic-Tobi.PNG" alt="">
