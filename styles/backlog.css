@@ -34,6 +34,7 @@
 .backlog-card {
     background-color: #F4F3FB;
     border-radius: 10px;
+    border-left: 5px solid yellow;
     display: flex;
     align-items: stretch;
     min-height: 82px;
@@ -44,12 +45,6 @@
 .task-asssignedment {
     display: flex;
     flex: 2;
-}
-
-.task-urgency {
-    background-color: yellow;
-    width: 10px;
-    border-radius: 10px 0 0 10px;
 }
 
 .backlog-card-img-container {
