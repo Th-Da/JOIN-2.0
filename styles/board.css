@@ -1,25 +1,28 @@
 .tasks-main-container {
     display: flex;
+    justify-content: space-evenly;
     height: 100vh;
     width: 100%;
+    margin-left: 160px;
+    margin-right: 10px;
 }
 
 .tasks-container {
     width: 22%;
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
-    margin-right: 15px;
 }
 
 .tasks-headline-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3rem;
+    margin-top: 24px;
+    margin-bottom: 16px;
 }
 
 .tasks-list-container {
-    background-color: lightblue;
-    height: 90%;
+    background-color: #F4F3FB;
+    height: 100%;
+    margin-bottom: 24px;
 }
