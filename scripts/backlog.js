@@ -12,3 +12,7 @@ function closeBacklogCardDetails() {
        }, 500);
 
 }
+
+function stopPropagation(event) {
+    event.stopPropagation();
+}
