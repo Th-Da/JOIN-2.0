@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/addTask.css">
+    <link rel="stylesheet" href="./styles/backlog.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body onload="init()">
+
+    <div class="main-container" id="mainContainer">
+        <div w3-include-html="./templates/navbar.html"></div>
+        <div class="backlog-container">
+            <div class="headline-container">
+                <h1>Add Task</h1>
+                <span class="join-phrase">Learning Management System Project</span>
+            </div>
+            <div class="add-task-main-container">
+                <div class="add-task-container-bg">
+                    <div class="add-task-container-left">
+                        <div class="input-field-headline">TITLE</div>
+                        <div><input class="input-fields" placeholder="Type your title..." type="text"></div>
+                        <div class="input-field-headline">CATEGORY</div>
+                        <div>
+                            <select class="input-fields" id="">
+                                <option>Management</option>
+                                <option>Software Development</option>
+                                <option>UX/UI Desing</option>
+                                <option>Human Resources</option>
+                            </select>
+                        </div>
+                        <div class="input-field-headline">DESCRIPTION</div>
+                        <div><input class="input-field-discription" placeholder="Type your discription..." type="text"></div>
+                    </div>
+                    <div class="add-task-container-right">
+                        <div class="input-field-headline">DUE DATE</div>
+                        <div><input class="input-fields" type="date"></div>
+                        <div class="input-field-headline">URGENCY</div>
+                        <div>
+                            <select class="input-fields" id="">
+                                <option>High</option>
+                                <option>Intermediate</option>
+                                <option>Low</option>
+                            </select>
+                        </div>
+                        <div class="button_plus"></div>
+                        <div>
+                            <button class="button-cancel">CANCEL</button>
+                            <button class="button-create-task">CREATE TASK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./scripts/includeHTML.js"></script>
+</body>
+
+</html>
