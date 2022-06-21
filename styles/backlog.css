@@ -75,19 +75,6 @@
     flex: 2;
 }
 
-#card-details-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background-color: rgba(244, 243,251, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease-in-out !important;
-}
-
 .card-details-content {
     min-height: 380px;
     min-width: 680px;
