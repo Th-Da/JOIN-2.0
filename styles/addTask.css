@@ -15,6 +15,7 @@
 .add-task-container-left {
     padding: 20px;
     width: 50%;
+    margin-left: 80px;
 }
 
 .add-task-container-right {

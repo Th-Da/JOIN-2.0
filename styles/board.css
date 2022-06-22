@@ -19,6 +19,10 @@
     align-items: center;
     margin-top: 24px;
     margin-bottom: 16px;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #1E3190;
+    font-weight: bold;
 }
 
 .tasks-list-container {
