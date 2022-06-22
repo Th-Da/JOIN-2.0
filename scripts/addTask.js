@@ -1,5 +1,5 @@
 // Creates a new task
-function createNewTask() {
+function createNewTask() { // creat task button
     let titles = document.getElementById('input-field-title').value;
     let dueDates = document.getElementById('input-field-date').value;
     let categorys = document.getElementById('input-field-category').value;
@@ -40,7 +40,7 @@ function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, da
 
 
 //The input is deleted from the input fields
-function cancelTheInput() {
+function cancelTheInput() { //cancel button
     document.getElementById('input-field-title').value = '';
     document.getElementById('input-field-date').value = '';
     document.getElementById('input-field-category').value = '';
