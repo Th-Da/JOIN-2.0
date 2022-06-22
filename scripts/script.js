@@ -54,26 +54,11 @@ let tasksToDos = [
             },
         ],
     },
-    {
-        'title': [],
-        'urgency': [],
-        'category': [],
-        'createdDate': [],
-        'dueDate': [],
-        'description': [],
-        'collaborators': [
-            {
-                'name': [],
-                'email': [],
-                'img': []
-            },
-        ],
-    },
-]
+];
 
 async function init() {
     await includeHTML();
-    
+
 }
 
 // stops event propagation
@@ -85,7 +70,7 @@ function stopPropagation(event) {
 function openCardDetails() {
     document.getElementById('card-details-container').classList.remove('d-none');
     setTimeout(() => {
-     document.getElementById('card-details-container').classList.remove('fade-out')   
+        document.getElementById('card-details-container').classList.remove('fade-out')
     }, 50);
 }
 
@@ -93,7 +78,7 @@ function openCardDetails() {
 function closeCardDetails() {
     document.getElementById('card-details-container').classList.add('fade-out');
     setTimeout(() => {
-        document.getElementById('card-details-container').classList.add('d-none')   
-       }, 500);
+        document.getElementById('card-details-container').classList.add('d-none')
+    }, 500);
 
 }

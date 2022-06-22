@@ -14,6 +14,8 @@ function createNewTask() { // creat task button
         pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
 
         clearInputFields();
+
+        saveToLocalStorage();
     }
 }
 
@@ -30,12 +32,14 @@ function clearInputFields() {
 
 //push in taskToDos Array
 function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date) {
-    tasksToDos[3]['title'].push(titles);
-    tasksToDos[3]['description'].push(descriptions);
-    tasksToDos[3]['dueDate'].push(dueDates);
-    tasksToDos[3]['category'].push(categorys);
-    tasksToDos[3]['urgency'].push(urgencys);
-    tasksToDos[3]['createdDate'].push(date);
+    tasksToDos.push({
+        'title': titles,
+        'description': descriptions,
+        'dueDate': dueDates,
+        'category': categorys,
+        'urgency': urgencys,
+        'createdDate': date
+    });
 }
 
 
@@ -46,4 +50,20 @@ function cancelTheInput() { //cancel button
     document.getElementById('input-field-category').value = '';
     document.getElementById('input-field-description').value = '';
     document.getElementById('input-field-urgency').value = '';
+}
+
+
+//save to LocalStorage
+function saveToLocalStorage() {
+    let tasksToDosAsText = JSON.stringify(tasksToDos);
+    localStorage.setItem('tasksToDos', tasksToDosAsText);
+}
+
+
+//load to LocalStorage
+function loadToLocalStorage() {
+    let tasksToDosAsText = localStorage.getItem('tasksToDos');
+    if(tasksToDos) {
+        tasksToDos = JSON.parse(tasksToDosAsText);
+    }
 }
