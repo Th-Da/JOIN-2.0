@@ -54,6 +54,21 @@ let tasksToDos = [
             },
         ],
     },
+    {
+        'title': [],
+        'urgency': [],
+        'category': [],
+        'createdDate': [],
+        'dueDate': [],
+        'description': [],
+        'collaborators': [
+            {
+                'name': [],
+                'email': [],
+                'img': []
+            },
+        ],
+    },
 ];
 
 async function init() {
