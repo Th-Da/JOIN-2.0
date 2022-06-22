@@ -1,3 +1,5 @@
+let currentDraggedElement; 
+
 async function initBoard() {
     await includeHTML();
     createTodos();
@@ -21,11 +23,23 @@ function insertTodoCollaboratorsToCard(collaborators, i) {
     }
 }
 
+function startDragging(i) {
+    currentDraggedElement = i;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function moveTo(category) {
+    tasksToDos[currentDraggedElement]['']
+  }
+
 // HTML snippets
 
 function createToDoTaskCardHTML(task, i) {
     return /*html*/ `
-    <div class="task-card"  onclick="openCardDetails()">
+    <div class="task-card" onclick="openCardDetails()" ondragstart="startDragging(${i})" draggable="true">
        <div class="task-card-headline">${task['title']}</div>
        <span><b>Due Date:</b> ${task['dueDate']}</span>
        <div class="collaborators-container" id="todoCollaborators${i}">

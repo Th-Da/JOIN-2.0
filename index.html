@@ -26,7 +26,7 @@
                 <div class="tasks-headline-container">
                     <h5>TO DO</h5>
                 </div>
-                <div class="tasks-list-container" id="todo-list">
+                <div class="tasks-list-container" id="todo-list" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
                     
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="tasks-headline-container">
                     <h5>IN PROGRESS</h5>
                 </div>
-                <div class="tasks-list-container">
+                <div class="tasks-list-container" ondrop="moveTo('in-progress')" ondragover="allowDrop(event)">
 
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="tasks-headline-container">
                     <h5>TESTING</h5>
                 </div>
-                <div class="tasks-list-container">
+                <div class="tasks-list-container" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
                     <div class="task-card"  onclick="openCardDetails()">
                         <div class="task-card-headline">Task Title</div>
                         <span><b>Due Date:</b> 27.8.22</span>
@@ -88,7 +88,7 @@
                 <div class="tasks-headline-container">
                     <h5>DONE</h5>
                 </div>
-                <div class="tasks-list-container">
+                <div class="tasks-list-container" ondrop="moveTo('done')" ondragover="allowDrop(event)">
 
                 </div>
             </div>

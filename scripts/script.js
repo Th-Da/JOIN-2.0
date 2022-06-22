@@ -54,7 +54,7 @@ let tasksToDos = [
             },
         ],
     },
-]
+];
 
 async function init() {
     await includeHTML();
