@@ -1,5 +1,6 @@
 let tasksToDos = [
     {
+        'currentStatus': 'ToDo', 
         'title': 'Wäsche waschen',
         'urgency': 'Urgent',
         'category': 'Management',
@@ -20,6 +21,7 @@ let tasksToDos = [
         ],
     },
     {
+        'currentStatus': 'ToDo', 
         'title': 'Auto Kaufen',
         'urgency': 'Medium',
         'category': 'Sales',
@@ -35,6 +37,7 @@ let tasksToDos = [
         ],
     },
     {
+        'currentStatus': 'ToDo', 
         'title': 'Pizza Essen',
         'urgency': 'Urgent',
         'category': 'Ich',
@@ -55,6 +58,12 @@ let tasksToDos = [
         ],
     },
 ];
+
+let tasksInProgress = [];
+
+let tasksTesting = [];
+
+let tasksDone = [];
 
 async function init() {
     await includeHTML();
