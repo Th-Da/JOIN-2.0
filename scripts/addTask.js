@@ -1,3 +1,6 @@
+let employees = [];
+
+
 // Creates a new task
 function createNewTask() { // creat task button
     let titles = document.getElementById('input-field-title').value;
@@ -63,7 +66,7 @@ function saveToLocalStorage() {
 //load to LocalStorage
 function loadToLocalStorage() {
     let tasksToDosAsText = localStorage.getItem('tasksToDos');
-    if(tasksToDos) {
+    if (tasksToDos) {
         tasksToDos = JSON.parse(tasksToDosAsText);
     }
 }

@@ -30,7 +30,8 @@
                 <div class="add-task-container-bg">
                     <div class="add-task-container-left">
                         <div class="input-field-headline">TITLE</div>
-                        <div><input id="input-field-title" class="input-fields" placeholder="Type your title..." type="text"></div>
+                        <div><input id="input-field-title" class="input-fields" placeholder="Type your title..."
+                                type="text"></div>
                         <div class="input-field-headline">CATEGORY</div>
                         <div>
                             <select class="input-fields" id="input-field-category">
@@ -41,7 +42,8 @@
                             </select>
                         </div>
                         <div class="input-field-headline">DESCRIPTION</div>
-                        <div><input id="input-field-description" class="input-field-discription" placeholder="Type your discription..." type="text"></div>
+                        <div><input id="input-field-description" class="input-field-discription"
+                                placeholder="Type your discription..." type="text"></div>
                     </div>
                     <div class="add-task-container-right">
                         <div class="input-field-headline">DUE DATE</div>
@@ -54,11 +56,61 @@
                                 <option>Low</option>
                             </select>
                         </div>
-                        <div class="button_plus"></div>
+                        <div onclick="openCardDetails()" class="button_plus"></div>
                         <div class="buttons">
                             <button onclick="cancelTheInput()" class="button-cancel">CANCEL</button>
                             <button onclick="createNewTask()" class="button-create-task">CREATE TASK</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="card-details-container" class="d-none fade-out" onclick="closeCardDetails()">
+            <div class="card-details-content" onclick="stopPropagation(event)">
+                <div class="card-details-content-right">
+                    <div class="card-details-button-container">
+                        <img src="img/arrow-32-24.png" alt="" title="Task Done">
+                        <img src="img/x-mark-24.png" alt="" title="Go Back" onclick="closeCardDetails()">
+                    </div>
+                    <div class="backlog-card border"  onclick="pushEmployeeToAddTask()">
+                        <div class="task-asssignedment">
+                            <div class="backlog-card-img-container">
+                                <img id="employee-img-1" src="img/Profile-Pic-Tobi.PNG" alt="">
+                            </div>
+                        </div>
+                        <div class="task-category">Human Resources</div>
+                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Recusandae odio minima, culpa ea?</div>
+                    </div>
+                    <div class="backlog-card border"  onclick="pushEmployeeToAddTask()">
+                        <div class="task-asssignedment">
+                            <div class="backlog-card-img-container">
+                                <img id="employee-img-2" src="IMG/sir-cow.png" alt="">
+                            </div>
+                        </div>
+                        <div class="task-category">UX/UI Desing</div>
+                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Recusandae odio minima, culpa ea?</div>
+                    </div>
+                    <div class="backlog-card border"  onclick="pushEmployeeToAddTask()">
+                        <div class="task-asssignedment">
+                            <div class="backlog-card-img-container">
+                                <img id="employee-img-3" src="img/Profile-Pic-Tobi.PNG" alt="">
+                            </div>
+                        </div>
+                        <div class="task-category">Software Development</div>
+                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Recusandae odio minima, culpa ea?</div>
+                    </div>
+                    <div class="backlog-card border"  onclick="pushEmployeeToAddTask()">
+                        <div class="task-asssignedment">
+                            <div class="backlog-card-img-container">
+                                <img id="employee-img-4" src="img/sir-cow.png" alt="">
+                            </div>
+                        </div>
+                        <div class="task-category">Management</div>
+                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Recusandae odio minima, culpa ea?</div>
                     </div>
                 </div>
             </div>
