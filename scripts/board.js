@@ -4,36 +4,22 @@ let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list'
 
 async function initBoard() {
     await includeHTML();
+    loadFromLocalStorage();
     loadTasks();
 }
 
 function loadTasks() {
-    // if (currentMouseoverId) {
-    //     var container = document.getElementById(currentMouseoverId); // used for drag and drop
-    //     var status = tasksToDos.filter(t => t['currentStatus'] == currentMouseoverId);
-    //     container.innerHTML = ``;
-    // } else {
-    //     var container = document.getElementById('todo-list');
-    //     container.innerHTML = ``;
-    //     var status = tasksToDos;
-    // }
-    // for (let i = 0; i < status.length; i++) {
-    //     const task = status[i];
-    //     let collaborators = task['collaborators'];
-    //     container.innerHTML += createToDoTaskCardHTML(task, i);
-    //     insertTodoCollaboratorsToCard(collaborators, i);
-    // }
     emptyBoardLists();
     for (let i = 0; i < tasksToDos.length; i++) {
         const task = tasksToDos[i];
         let container = document.getElementById(task['currentStatus']);
         let collaborators = task['collaborators'];
         container.innerHTML += createToDoTaskCardHTML(task, i);
-        insertTodoCollaboratorsToCard(collaborators, i, status);
+        insertTodoCollaboratorsToCard(collaborators, i);
     }
 }
 
-function insertTodoCollaboratorsToCard(collaborators, i, status) {
+function insertTodoCollaboratorsToCard(collaborators, i) {
     for (let y = 0; y < collaborators.length; y++) {
         const collaborator = collaborators[y];
         document.getElementById('todoCollaborators' + i).innerHTML += /*html*/ `
@@ -65,7 +51,7 @@ function allowDrop(ev) {
 function moveTo() {
     tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
     saveToLocalStorage();
-    loadToLocalStorage();
+    loadFromLocalStorage();
     setTimeout(loadTasks, 0);
     console.log(tasksToDos);
 }

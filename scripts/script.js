@@ -85,9 +85,9 @@ let tasksToDos = [
 ];
 
 async function init() {
+    loadFromLocalStorage();
     await includeHTML();
     await loadUrlUsers();
-
 }
 
 // stops event propagation
@@ -119,10 +119,10 @@ function saveToLocalStorage() {
 }
 
 
-//load to LocalStorage
-function loadToLocalStorage() {
+//load from LocalStorage
+function loadFromLocalStorage() {
     let tasksToDosAsText = localStorage.getItem('tasksToDos');
-    if (tasksToDos) {
+    if (tasksToDosAsText) {
         tasksToDos = JSON.parse(tasksToDosAsText);
     }
 }
