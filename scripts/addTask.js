@@ -1,4 +1,5 @@
 let employees = [];
+let loadUsers = [];
 
 
 // Creates a new task
@@ -36,6 +37,7 @@ function clearInputFields() {
 //push in taskToDos Array
 function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date) {
     tasksToDos.push({
+        'currentStatus': 'todo-list',
         'title': titles,
         'description': descriptions,
         'dueDate': dueDates,
@@ -53,4 +55,13 @@ function cancelTheInput() { //cancel button
     document.getElementById('input-field-category').value = '';
     document.getElementById('input-field-description').value = '';
     document.getElementById('input-field-urgency').value = '';
+}
+
+
+// Load users from the api
+async function loadUrlUsers() {
+    let url = 'https://randomuser.me/api/?results=4';
+    let response = await fetch(url);
+    let responseAsJson = await response.json();
+    loadUsers = responseAsJson; 
 }
