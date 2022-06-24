@@ -54,19 +54,3 @@ function cancelTheInput() { //cancel button
     document.getElementById('input-field-description').value = '';
     document.getElementById('input-field-urgency').value = '';
 }
-
-
-//save to LocalStorage
-function saveToLocalStorage() {
-    let tasksToDosAsText = JSON.stringify(tasksToDos);
-    localStorage.setItem('tasksToDos', tasksToDosAsText);
-}
-
-
-//load to LocalStorage
-function loadToLocalStorage() {
-    let tasksToDosAsText = localStorage.getItem('tasksToDos');
-    if (tasksToDos) {
-        tasksToDos = JSON.parse(tasksToDosAsText);
-    }
-}
