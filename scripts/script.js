@@ -1,5 +1,6 @@
 let tasksToDos = [
     {
+        'id':'0',
         'currentStatus': 'todo-list', 
         'title': 'Wäsche waschen',
         'urgency': 'Urgent',
@@ -21,6 +22,7 @@ let tasksToDos = [
         ],
     },
     {
+        'id':'1',
         'currentStatus': 'todo-list', 
         'title': 'Auto Kaufen',
         'urgency': 'Medium',
@@ -37,6 +39,7 @@ let tasksToDos = [
         ],
     },
     {
+        'id':'2',
         'currentStatus': 'todo-list', 
         'title': 'Pizza Essen',
         'urgency': 'Urgent',
@@ -55,6 +58,28 @@ let tasksToDos = [
                 'email': 'bieberbutzemann@fake.com',
                 'img': "img/Profile-Pic-Tobi.PNG"
             },
+        ],
+    },
+    {
+        'id':'3',
+        'currentStatus': 'in-progress-list', 
+        'title': 'Kuh Föhnen',
+        'urgency': 'Urgent',
+        'category': 'Management',
+        'createdDate': '19.03.2022',
+        'dueDate': '22.08.22',
+        'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae odio minima, culpa ea?',
+        'collaborators': [
+            {
+                'name': 'Tobias Fernkorn',
+                'email': 'bieberbutzemann@fake.com',
+                'img': "img/Profile-Pic-Tobi.PNG"
+            },
+            {
+                'name': 'Sir Cow',
+                'email': 'laktoseintolerant@kuh.com',
+                'img': "img/sir-cow.png"
+            }
         ],
     },
 ];
