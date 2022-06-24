@@ -66,7 +66,7 @@ function moveTo() {
     tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
     // saveToLocalStorage();
     // loadToLocalStorage();
-    setTimeout(loadTasks, 1000);
+    setTimeout(loadTasks, 0);
     console.log(tasksToDos);
 }
 
