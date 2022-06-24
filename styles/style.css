@@ -59,7 +59,11 @@ body {
 .slected-nav-item {
     width: 7px;
     height: 25px;
+}
 
+.active {
+    background-color: #4e95fd;
+    color: white;
 }
 
 .headline-container {
