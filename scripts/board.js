@@ -64,8 +64,8 @@ function allowDrop(ev) {
 
 function moveTo() {
     tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
-    // saveToLocalStorage();
-    // loadToLocalStorage();
+    saveToLocalStorage();
+    loadToLocalStorage();
     setTimeout(loadTasks, 0);
     console.log(tasksToDos);
 }
