@@ -1,5 +1,5 @@
 let currentDraggedElement; // used for drag and drop
-let currentMouseoverId;      // ---------^^-----------
+let currentMouseoverId;    // ---------^^-----------
 
 async function initBoard() {
     await includeHTML();
@@ -9,18 +9,20 @@ async function initBoard() {
 function createTodos() {
     if (currentMouseoverId) {
         var container = document.getElementById(currentMouseoverId); // used for drag and drop
-
+        var status = tasksToDos.filter(t => t['currentStatus'] == currentMouseoverId);
+        container.innerHTML = ``;
     } else {
         var container = document.getElementById('todo-list');
+        container.innerHTML = ``;
+        var status = tasksToDos;
     }
-    for (let i = 0; i < tasksToDos.length; i++) {
-        const task = tasksToDos[i];
+    for (let i = 0; i < status.length; i++) {
+        const task = status[i];
         let collaborators = task['collaborators'];
         container.innerHTML += createToDoTaskCardHTML(task, i);
         insertTodoCollaboratorsToCard(collaborators, i);
     }
 }
-
 
 function insertTodoCollaboratorsToCard(collaborators, i) {
     for (let y = 0; y < collaborators.length; y++) {
@@ -45,17 +47,18 @@ function allowDrop(ev) {
 }
 
 function moveTo() {
-    let taskToPush = tasksToDos[currentDraggedElement];
-    tasksInProgress.push(taskToPush);
-    tasksToDos.splice(currentDraggedElement, 1);
+    tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
+    saveToLocalStorage();
+    loadToLocalStorage();
     setTimeout(createTodos, 1000);
+    
 }
 
 // HTML snippets
 
 function createToDoTaskCardHTML(task, i) {
     return /*html*/ `
-    <div class="task-card" onclick="openCardDetails()" ondragstart="startDragging(${i})" draggable="true">
+    <div class="task-card" onclick="openCardDetails()" ondragstart="startDragging(${i})" draggable="true" id="${currentMouseoverId}">
        <div class="task-card-headline">${task['title']}</div>
        <span><b>Due Date:</b> ${task['dueDate']}</span>
        <div class="collaborators-container" id="todoCollaborators${i}">

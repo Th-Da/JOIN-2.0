@@ -1,6 +1,6 @@
 let tasksToDos = [
     {
-        'currentStatus': 'ToDo', 
+        'currentStatus': 'todo-list', 
         'title': 'Wäsche waschen',
         'urgency': 'Urgent',
         'category': 'Management',
@@ -21,7 +21,7 @@ let tasksToDos = [
         ],
     },
     {
-        'currentStatus': 'ToDo', 
+        'currentStatus': 'todo-list', 
         'title': 'Auto Kaufen',
         'urgency': 'Medium',
         'category': 'Sales',
@@ -37,7 +37,7 @@ let tasksToDos = [
         ],
     },
     {
-        'currentStatus': 'ToDo', 
+        'currentStatus': 'todo-list', 
         'title': 'Pizza Essen',
         'urgency': 'Urgent',
         'category': 'Ich',
@@ -58,12 +58,6 @@ let tasksToDos = [
         ],
     },
 ];
-
-let tasksInProgress = [];
-
-let tasksTesting = [];
-
-let tasksDone = [];
 
 async function init() {
     await includeHTML();
@@ -90,4 +84,19 @@ function closeCardDetails() {
         document.getElementById('card-details-container').classList.add('d-none')
     }, 500);
 
+}
+
+//save to LocalStorage
+function saveToLocalStorage() {
+    let tasksToDosAsText = JSON.stringify(tasksToDos);
+    localStorage.setItem('tasksToDos', tasksToDosAsText);
+}
+
+
+//load to LocalStorage
+function loadToLocalStorage() {
+    let tasksToDosAsText = localStorage.getItem('tasksToDos');
+    if (tasksToDos) {
+        tasksToDos = JSON.parse(tasksToDosAsText);
+    }
 }

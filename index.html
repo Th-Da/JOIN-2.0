@@ -26,7 +26,7 @@
                 <div class="tasks-headline-container">
                     TO DO
                 </div>
-                <div class="tasks-list-container" id="todo-list" ondrop="moveTo('todo')" ondragover="allowDrop(event)" onmouseover="getId(this)">
+                <div class="tasks-list-container" id="todo-list" ondrop="moveTo('todo')" ondragover="allowDrop(event); getId(this)">
                     
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="tasks-headline-container">
                     IN PROGRESS
                 </div>
-                <div class="tasks-list-container" id="in-progress-list" ondrop="moveTo('in-progress')" ondragover="allowDrop(event)" onmouseover="getId(this)">
+                <div class="tasks-list-container" id="in-progress-list" ondrop="moveTo('in-progress')" ondragover="allowDrop(event); getId(this)">
 
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="tasks-headline-container">
                     TESTING
                 </div>
-                <div class="tasks-list-container" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
+                <div class="tasks-list-container" id="testing-list" ondrop="moveTo('testing')" ondragover="allowDrop(event); getId(this)">
                     <div class="task-card"  onclick="openCardDetails()">
                         <div class="task-card-headline">Task Title</div>
                         <span><b>Due Date:</b> 27.8.22</span>
@@ -88,7 +88,7 @@
                 <div class="tasks-headline-container">
                     DONE
                 </div>
-                <div class="tasks-list-container" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                <div class="tasks-list-container" id="done-list" ondrop="moveTo('done')" ondragover="allowDrop(event); getId(this)">
 
                 </div>
             </div>
