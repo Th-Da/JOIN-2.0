@@ -20,11 +20,11 @@ function createTodos() {
         const task = status[i];
         let collaborators = task['collaborators'];
         container.innerHTML += createToDoTaskCardHTML(task, i);
-        insertTodoCollaboratorsToCard(collaborators, i);
+        insertTodoCollaboratorsToCard(collaborators, i, status);
     }
 }
 
-function insertTodoCollaboratorsToCard(collaborators, i) {
+function insertTodoCollaboratorsToCard(collaborators, i, status) {
     for (let y = 0; y < collaborators.length; y++) {
         const collaborator = collaborators[y];
         document.getElementById('todoCollaborators' + i).innerHTML += /*html*/ `
