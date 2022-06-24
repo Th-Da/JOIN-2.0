@@ -1,6 +1,6 @@
 let currentDraggedElement; // used for drag and drop
 let currentMouseoverId;    // ---------^^-----------
-let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list'];
+let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list']; //used to empty boards
 
 async function initBoard() {
     await includeHTML();
@@ -74,7 +74,7 @@ function moveTo() {
 
 function createToDoTaskCardHTML(task, i) {
     return /*html*/ `
-    <div class="task-card" onclick="openCardDetails()" ondragstart="startDragging(${i})" draggable="true" id="${currentMouseoverId}">
+    <div class="task-card" onclick="openCardDetails()" ondragstart="startDragging(${i})" draggable="true" id="${task['id']}">
        <div class="task-card-headline">${task['title']}</div>
        <span><b>Due Date:</b> ${task['dueDate']}</span>
        <div class="collaborators-container" id="todoCollaborators${i}">
