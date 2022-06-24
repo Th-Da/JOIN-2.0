@@ -1,5 +1,6 @@
 let tasksToDos = [
     {
+        'id':'0',
         'currentStatus': 'todo-list', 
         'title': 'Wäsche waschen',
         'urgency': 'Urgent',
@@ -21,6 +22,7 @@ let tasksToDos = [
         ],
     },
     {
+        'id':'1',
         'currentStatus': 'todo-list', 
         'title': 'Auto Kaufen',
         'urgency': 'Medium',
@@ -37,6 +39,7 @@ let tasksToDos = [
         ],
     },
     {
+        'id':'2',
         'currentStatus': 'todo-list', 
         'title': 'Pizza Essen',
         'urgency': 'Urgent',
@@ -58,6 +61,7 @@ let tasksToDos = [
         ],
     },
     {
+        'id':'3',
         'currentStatus': 'in-progress-list', 
         'title': 'Kuh Föhnen',
         'urgency': 'Urgent',
