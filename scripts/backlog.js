@@ -4,6 +4,7 @@ function initBacklog() {
     loadTasksToBacklog();
 }
 
+//load tasks to backlog
 function loadTasksToBacklog() {
     emptyBacklog();
     filterTasksByUrgency('High');
@@ -11,6 +12,7 @@ function loadTasksToBacklog() {
     filterTasksByUrgency('Low');
 }
 
+//load tasks by urgency
 function filterTasksByUrgency(urgency) {
     for (let i = 0; i < tasksToDos.length; i++) {
         const task = tasksToDos[i];
@@ -21,12 +23,14 @@ function filterTasksByUrgency(urgency) {
     }
 }
 
+//creates backlog card
 function loadBacklockCard(i, task, collaborators) {
     document.getElementById('backlog-cards').innerHTML += createBacklogCardHTML(i, task);
         insertBacklogCardCollaborators(collaborators, i);
         createUrgentBoarder(i, document.getElementById(i))
 }
 
+//insert collaborators to backlog card
 function insertBacklogCardCollaborators(collaborators, i) {
     let container = document.getElementById('backlog-card-img-container'+i)
     for (let i = 0; i < collaborators.length; i++) {
@@ -37,11 +41,12 @@ function insertBacklogCardCollaborators(collaborators, i) {
     }
 }
 
+//emptys backlog before loading new cards
 function emptyBacklog() {
     document.getElementById('backlog-cards').innerHTML = '';
 }
 
-//snippets
+//HTML snippets
 function createBacklogCardHTML(i, task) {
     return /*html*/ `
     <div class="backlog-card" id="${i}"  onclick="openCardDetails(${i})">
