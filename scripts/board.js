@@ -17,6 +17,25 @@ function loadTasks() {
         container.innerHTML += createToDoTaskCardHTML(task, i);
         insertTodoCollaboratorsToCard(collaborators, i);
     }
+    filterUrgentBorder();
+}
+
+function filterUrgentBorder() {
+    for (let i = 0; i < tasksToDos.length; i++) {
+        let container = document.getElementById(i);
+        createUrgentBoarder(i, container);
+    }
+}
+
+function createUrgentBoarder(i, container) {
+    let task = tasksToDos[i];
+    if (task['urgency'] === 'High') {
+        container.classList.add("urgent")    
+        } else if (task['urgency'] === 'Intermediate') {
+            container.classList.add("medium") 
+        } else if (task['urgency'] === 'Low') {
+            container.classList.add("low") 
+        }
 }
 
 function insertTodoCollaboratorsToCard(collaborators, i) {
@@ -60,7 +79,7 @@ function moveTo() {
 
 function createToDoTaskCardHTML(task, i) {
     return /*html*/ `
-    <div class="task-card" onclick="openCardDetails()" ondragstart="startDragging(${i})" draggable="true" id="${task['id']}">
+    <div class="task-card" onclick="openCardDetails(${i})" ondragstart="startDragging(${i})" draggable="true" id="${i}">
        <div class="task-card-headline">${task['title']}</div>
        <span><b>Due Date:</b> ${task['dueDate']}</span>
        <div class="collaborators-container" id="todoCollaborators${i}">

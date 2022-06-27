@@ -7,8 +7,20 @@ body {
     transition: opacity 0.5s ease-in-out !important;
 }
 
+.urgent {
+border-left: 5px solid red !important;
+}
+
+.medium {
+    border-left: 5px solid yellow !important;
+}
+
+.low {
+    border-left: 5px solid blue !important;
+
+}
+
 .main-container {
-    /* height: 50vh; */
     display: flex;
 }
 
@@ -100,7 +112,6 @@ body {
     min-width: 680px;
     background-color: #F4F3FB;
     border: 1px solid lightgray;
-    border-left: 5px solid yellow;
     border-radius: 10px;
     box-shadow: 0px 0px 40px -2px #787878;
     display: flex;
