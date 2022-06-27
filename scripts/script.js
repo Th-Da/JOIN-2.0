@@ -83,6 +83,7 @@ let tasksToDos = [
         ],
     },
 ];
+let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list']; //used to empty boards and change status
 
 async function init() {
     await includeHTML();
@@ -101,12 +102,13 @@ function openCardDetails(id) {
     let task = tasksToDos[id]
     let container = document.getElementById("card-details-container");
     container.innerHTML = fillCardDetailsHTML(task);
+    fillCardDetailsButtonsContainer(task, id);
     fillCardDeatilCollaborators(id);
     createUrgentBoarder(id, document.getElementById("card-details"))
     fadeIn();
 }
 
-//creates all collaborator details on detail card before fade in
+//creates collaborator details on detail card before fade in
 function fillCardDeatilCollaborators(id) {
     let collaborators = tasksToDos[id]['collaborators'];
     for (let i = 0; i < collaborators.length; i++) {
@@ -146,6 +148,60 @@ function createUrgentBoarder(i, container) {
         }
 }
 
+function fillCardDetailsButtonsContainer(task, id) {
+    container = document.getElementById('button-container');
+    container.innerHTML = '';
+    if(task['currentStatus'] === 'todo-list') {
+        container.innerHTML += addCurrentStatusTitleHTML('To Do');
+        container.innerHTML += addForwardButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    } else if (task['currentStatus'] === 'in-progress-list') {
+        container.innerHTML += addBackButtonHTML(id);
+        container.innerHTML += addCurrentStatusTitleHTML('In Progress');
+        container.innerHTML += addForwardButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    } else if (task['currentStatus'] === 'testing-list') {
+        container.innerHTML += addBackButtonHTML(id);
+        container.innerHTML += addCurrentStatusTitleHTML('Testing');
+        container.innerHTML += addForwardButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    } else {
+        container.innerHTML += addBackButtonHTML(id);
+        container.innerHTML += addCurrentStatusTitleHTML('Done');
+        container.innerHTML += addDeleteButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    }
+}
+
+function nextStatus(id) {
+    let task = tasksToDos[id];
+    let currentStatus = task['currentStatus'];
+    let currentStatusIndex = boardListIds.indexOf(currentStatus);
+    let newStatusIndex = currentStatusIndex + 1;
+    task['currentStatus'] = boardListIds[newStatusIndex];
+    fillCardDetailsButtonsContainer(task, id);
+    saveToLocalStorage();
+    loadTasksToBoard();
+}
+
+function lastStatus(id) {
+    let task = tasksToDos[id];
+    let currentStatus = task['currentStatus'];
+    let currentStatusIndex = boardListIds.indexOf(currentStatus);
+    let newStatusIndex = currentStatusIndex - 1;
+    task['currentStatus'] = boardListIds[newStatusIndex];
+    fillCardDetailsButtonsContainer(task, id);
+    saveToLocalStorage();
+    loadTasksToBoard();
+}
+
+function deleteTask(id) {
+    tasksToDos.splice(id, 1);
+    saveToLocalStorage();
+    loadTasksToBoard();
+    closeCardDetails();
+}
+
 //save to LocalStorage
 function saveToLocalStorage() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);
@@ -177,9 +233,7 @@ function fillCardDetailsHTML(task) {
                 <span class="card-details-description">${task['description']}</span>
             </div>
             <div class="card-details-content-right">
-                <div class="card-details-button-container">
-                    <img src="img/arrow-32-24.png" alt="" title="Task Done">
-                    <img src="img/x-mark-24.png" alt="" title="Go Back" onclick="closeCardDetails()">
+                <div class="card-details-button-container" id="button-container">
                 </div>
                 <div id="assignee-container">
                 </div>
@@ -198,4 +252,34 @@ function fillCardDeatilCollaboratorsHTML(collaborator) {
        </div>
    </div>
 `
+}
+
+function addBackButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/arrow-97-24.png" alt="" title="Last Status" onclick="lastStatus('${id}')">
+    `
+}
+
+function addCurrentStatusTitleHTML(title){
+    return /*html*/ `
+    <span><b>${title}</b></span>
+    `
+}
+
+function addForwardButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/arrow-32-24.png" alt="" title="Next Status" onclick="nextStatus('${id}')">
+    `
+}
+
+function addGoBackButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/close-window-24.png" alt="" title="Go Back" onclick="closeCardDetails('${id}')">
+    `
+}
+
+function addDeleteButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/trash-2-24.png" alt="" title="Delete Task" onclick="deleteTask('${id}')">
+    `
 }

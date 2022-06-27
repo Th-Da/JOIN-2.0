@@ -130,9 +130,15 @@ border-left: 5px solid #FFABAB !important;
 .card-details-button-container img {
     width: 16px;
     height: 16px;
+    margin-top: 4px;
     margin-left: 8px;
     margin-bottom: 16px;
     cursor: pointer;
+}
+
+.card-details-button-container span {
+    color: #1E3190;
+    margin-left: 8px;
 }
 
 .card-details-content-left {

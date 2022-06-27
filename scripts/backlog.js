@@ -10,6 +10,7 @@ function loadTasksToBacklog() {
     filterTasksByUrgency('High');
     filterTasksByUrgency('Intermediate');
     filterTasksByUrgency('Low');
+    filterTaskByStatudDone();
 }
 
 //load tasks by urgency
@@ -17,7 +18,18 @@ function filterTasksByUrgency(urgency) {
     for (let i = 0; i < tasksToDos.length; i++) {
         const task = tasksToDos[i];
         const collaborators = task['collaborators'];
-        if(task['urgency'] === urgency) {
+        if(task['urgency'] === urgency && task['currentStatus'] !== 'done-list') {
+            loadBacklockCard(i, task, collaborators)
+        } 
+    }
+}
+
+//load task that are done 
+function filterTaskByStatudDone() {
+    for (let i = 0; i < tasksToDos.length; i++) {
+        const task = tasksToDos[i];
+        const collaborators = task['collaborators'];
+        if(task['currentStatus'] === 'done-list') {
             loadBacklockCard(i, task, collaborators)
         } 
     }
