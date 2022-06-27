@@ -29,7 +29,6 @@
 .backlog-card {
     background-color: #F4F3FB;
     border-radius: 10px;
-    border-left: 5px solid yellow;
     display: flex;
     align-items: stretch;
     min-height: 82px;

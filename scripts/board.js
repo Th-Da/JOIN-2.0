@@ -5,10 +5,10 @@ let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list'
 async function initBoard() {
     await includeHTML();
     loadFromLocalStorage();
-    loadTasks();
+    loadTasksToBoard();
 }
 
-function loadTasks() {
+function loadTasksToBoard() {
     emptyBoardLists();
     for (let i = 0; i < tasksToDos.length; i++) {
         const task = tasksToDos[i];
@@ -27,21 +27,10 @@ function filterUrgentBorder() {
     }
 }
 
-function createUrgentBoarder(i, container) {
-    let task = tasksToDos[i];
-    if (task['urgency'] === 'High') {
-        container.classList.add("urgent")    
-        } else if (task['urgency'] === 'Intermediate') {
-            container.classList.add("medium") 
-        } else if (task['urgency'] === 'Low') {
-            container.classList.add("low") 
-        }
-}
-
 function insertTodoCollaboratorsToCard(collaborators, i) {
     for (let y = 0; y < collaborators.length; y++) {
         const collaborator = collaborators[y];
-        document.getElementById('todoCollaborators' + i).innerHTML += /*html*/ `
+        document.getElementById('taskCollaborators' + i).innerHTML += /*html*/ `
                 <img src="${collaborator['img']}" alt="">`
     }
 }
@@ -71,8 +60,7 @@ function moveTo() {
     tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
     saveToLocalStorage();
     loadFromLocalStorage();
-    setTimeout(loadTasks, 0);
-    console.log(tasksToDos);
+    setTimeout(loadTasksToBoard, 0);
 }
 
 // HTML snippets
@@ -82,7 +70,7 @@ function createToDoTaskCardHTML(task, i) {
     <div class="task-card" onclick="openCardDetails(${i})" ondragstart="startDragging(${i})" draggable="true" id="${i}">
        <div class="task-card-headline">${task['title']}</div>
        <span><b>Due Date:</b> ${task['dueDate']}</span>
-       <div class="collaborators-container" id="todoCollaborators${i}">
+       <div class="collaborators-container" id="taskCollaborators${i}">
        </div>
    </div>
    `

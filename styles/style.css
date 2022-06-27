@@ -8,16 +8,19 @@ body {
 }
 
 .urgent {
-border-left: 5px solid red !important;
+border-left: 5px solid #FFABAB !important;
 }
 
 .medium {
-    border-left: 5px solid yellow !important;
+    border-left: 5px solid #FFF5BA !important;
 }
 
 .low {
-    border-left: 5px solid blue !important;
+    border-left: 5px solid #6EB5FF !important;
+}
 
+.done {
+    border-left: 5px solid #AFF8DB !important;
 }
 
 .main-container {

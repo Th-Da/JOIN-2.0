@@ -43,7 +43,7 @@ let tasksToDos = [
         'currentStatus': 'todo-list',
         'title': 'Pizza Essen',
         'urgency': 'High',
-        'category': 'Ich',
+        'category': 'Software Development',
         'createdDate': '29.04.2022',
         'dueDate': '23.11.22',
         'description': 'Einmal die 12 mit doppelt Käse',
@@ -65,7 +65,7 @@ let tasksToDos = [
         'currentStatus': 'in-progress-list',
         'title': 'Kuh Föhnen',
         'urgency': 'Low',
-        'category': 'Management',
+        'category': 'Human Resourches',
         'createdDate': '19.03.2022',
         'dueDate': '22.08.22',
         'description': 'Auch eine Kuh muss geföhnt werden.',
@@ -130,7 +130,20 @@ function closeCardDetails() {
     setTimeout(() => {
         document.getElementById('card-details-container').classList.add('d-none')
     }, 500);
+}
 
+//add colored border to cards, depending on the urgent status
+function createUrgentBoarder(i, container) {
+    let task = tasksToDos[i];
+    if (task['currentStatus'] === 'done-list') {
+        container.classList.add("done")
+    } else if (task['urgency'] === 'High') {
+        container.classList.add("urgent")    
+        } else if (task['urgency'] === 'Intermediate') {
+            container.classList.add("medium") 
+        } else if (task['urgency'] === 'Low') {
+            container.classList.add("low") 
+        }
 }
 
 //save to LocalStorage
@@ -149,7 +162,6 @@ function loadFromLocalStorage() {
 }
 
 //Snippets
-
 function fillCardDetailsHTML(task) {
     return /*html*/ `
     <div class="card-details-content" id="card-details" onclick="stopPropagation(event)">

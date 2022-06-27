@@ -15,7 +15,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
-<body onload="init()">
+<body onload="initBacklog()">
 
     <div class="main-container" id="mainContainer">
         <div w3-include-html="./templates/navbar.html"></div>
@@ -28,64 +28,9 @@
                 <div class="backlog-head">
                     <div>Assingned To</div>
                     <div>Category</div>
-                    <div>Details</div>
+                    <div>Title</div>
                 </div>
                 <div id="backlog-cards">
-                    <div class="backlog-card"  onclick="openCardDetails()">
-                        <div class="task-asssignedment">
-                            <div class="backlog-card-img-container">
-                                <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                                <img src="img/sir-cow.png" alt="">
-                            </div>
-                        </div>
-                        <div class="task-category">Marketing</div>
-                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Recusandae odio minima, culpa ea?</div>
-                    </div>
-                    <div class="backlog-card"  onclick="openCardDetails()">
-                        <div class="task-asssignedment">
-                            <div class="backlog-card-img-container">
-                                <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                                <img src="img/sir-cow.png" alt="">
-                            </div>
-                        </div>
-                        <div class="task-category">Marketing</div>
-                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Recusandae odio minima, culpa ea?</div>
-                    </div>
-                    <div class="backlog-card"  onclick="openCardDetails()">
-                        <div class="task-asssignedment">
-                            <div class="backlog-card-img-container">
-                                <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                                <img src="img/sir-cow.png" alt="">
-                            </div>
-                        </div>
-                        <div class="task-category">Marketing</div>
-                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Recusandae odio minima, culpa ea?</div>
-                    </div>
-                    <div class="backlog-card"  onclick="openCardDetails()">
-                        <div class="task-asssignedment">
-                            <div class="backlog-card-img-container">
-                                <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                                <img src="img/sir-cow.png" alt="">
-                            </div>
-                        </div>
-                        <div class="task-category">Marketing</div>
-                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Recusandae odio minima, culpa ea?</div>
-                    </div>
-                    <div class="backlog-card"  onclick="openCardDetails()">
-                        <div class="task-asssignedment">
-                            <div class="backlog-card-img-container">
-                                <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                                <img src="img/sir-cow.png" alt="">
-                            </div>
-                        </div>
-                        <div class="task-category">Marketing</div>
-                        <div class="task-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Recusandae odio minima, culpa ea?</div>
-                    </div>
                 </div>
                 <div id="card-details-container" class="d-none fade-out" onclick="closeCardDetails()">
                     <div class="card-details-content" onclick="stopPropagation(event)">
