@@ -127,9 +127,24 @@
     border: 1px solid lightgrey;
 }
 
+.card-details-user {
+    min-height: 380px;
+    min-width: 680px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px -2px #787878;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 24px;
+    margin: 10px;
+}
+
 .close-button-container {
     width: 100%;
     height: 20px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: flex-end;
 }
@@ -138,4 +153,44 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+}
+
+.user-container-main {
+    width: 100%;
+}
+
+.user-container {
+    background-color: #F4F3FB;
+    border-radius: 10px;
+    display: flex;
+    align-items: stretch;
+    min-height: 82px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease-in-out;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid lightgrey;
+    display: flex;
+    align-items: center;
+}
+
+.user-container:hover {
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1) ; 
+}
+
+.img-user-container {
+    width: 150px;
+}
+
+.user-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.assignee-user-name {
+    width: 200px;
+    font-weight: bold;
 }

@@ -88,8 +88,6 @@ let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list'
 async function init() {
     await includeHTML();
     loadFromLocalStorage();
-
-    await loadUrlUsers();
 }
 
 // stops event propagation

@@ -1,5 +1,25 @@
-let employees = [];
-let loadUsers = [];
+let employees = [
+    {
+        'name': 'Leta Marshall',
+        'email': 'leta.marshall@example.com',
+        'img': 'https://randomuser.me/api/portraits/women/72.jpg'
+    },
+    {
+        'name': 'Joachim Cancel',
+        'email': 'joachim.Cancel@example.com',
+        'img': 'https://randomuser.me/api/portraits/men/89.jpg'
+    },
+    {
+        'name': 'Kirsten Büchler',
+        'email': 'kirsten.buchler@example.com',
+        'img': 'https://randomuser.me/api/portraits/women/69.jpg'
+    },
+    {
+        'name': 'Miguel Olson',
+        'email': 'miguel.olson@example.com',
+        'img': 'https://randomuser.me/api/portraits/men/40.jpg'
+    }
+];
 
 
 // Creates a new task
@@ -46,12 +66,12 @@ function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, da
         'createdDate': date,
         'collaborators': [
             {
-                'name': '',
-                'email': '',
-                'img': ''
+                'name': employees['0']['name'],
+                'email': employees['0']['email'],
+                'img': employees['0']['img']
             }
         ],
-    },);
+    });
 }
 
 
@@ -65,29 +85,49 @@ function cancelTheInput() { //cancel button
 }
 
 
+// open user card in AddTask
 function openUsersCard() {
     fadeIn();
     let openCard = document.getElementById('card-details-container');
 
     openCard.innerHTML = openUsersCardHTML();
+    showUsers();
 }
 
 
-// Load users from the api
-async function loadUrlUsers() {
-    let url = 'https://randomuser.me/api/?results=4';
-    let response = await fetch(url);
-    let responseAsJson = await response.json();
-    loadUsers = responseAsJson;
+// The individual employees are displayed
+function showUsers() {
+
+    for (let u = 0; u < employees.length; u++) {
+        const users = employees[u];
+        let showUsers = document.getElementById('card-details-users');
+        
+        showUsers.innerHTML += showUsersHTML(u);
+    }
 }
 
 
+// HTML snippets
 function openUsersCardHTML() {
-    return /*html*/ `
-        <div id="card-details" class="card-details-content">
-            <div class="close-button-container">
-                <img onclick="closeCardDetails()" src="img/x-mark-24.png" title="Go Back">
+    return /*html*/`
+    <div id="card-details" class="card-details-user">
+        <div class="close-button-container">
+            <img onclick="closeCardDetails()" src="img/x-mark-24.png" title="Go Back">
+        </div>
+        <div id="card-details-users"></div>
+    </div>
+    `
+}
+
+
+function showUsersHTML(u) {
+    return /*html*/`
+        <div onclick="chooseTheUser()" class="user-container-main">
+            <div class="user-container">
+                <div class="img-user-container"><img class="user-img" src="${employees[u]['img']}"></div>
+                <div class="assignee-user-name"><b>Name:</b> ${employees[u]['name']}</div>
+                <div class="assignee-email">E-Mail: ${employees[u]['email']}</div>
             </div>
         </div>
-    </div>`
+    `
 }
