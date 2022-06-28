@@ -124,9 +124,9 @@ function showUsersHTML(u) {
     return /*html*/`
         <div onclick="chooseTheUser()" class="user-container-main">
             <div class="user-container">
-                <div class="img-user-container"><img class="user-img" src="${employees[u]['img']}"></div>
-                <div class="assignee-user-name"><b>Name:</b> ${employees[u]['name']}</div>
-                <div class="assignee-email">E-Mail: ${employees[u]['email']}</div>
+                <div class="img-user-container width-responsive"><img class="user-img" src="${employees[u]['img']}"></div>
+                <div class="assignee-user-name width-responsive"><b>Name:</b> ${employees[u]['name']}</div>
+                <div class="assignee-email width-responsive">E-Mail: ${employees[u]['email']}</div>
             </div>
         </div>
     `
