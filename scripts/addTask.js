@@ -58,10 +58,29 @@ function cancelTheInput() { //cancel button
 }
 
 
+function openUsersCard() {
+    fadeIn();
+    let openCard = document.getElementById('card-details-container');
+
+    openCard.innerHTML = openUsersCardHTML();
+}
+
+
 // Load users from the api
 async function loadUrlUsers() {
     let url = 'https://randomuser.me/api/?results=4';
     let response = await fetch(url);
     let responseAsJson = await response.json();
-    loadUsers = responseAsJson; 
+    loadUsers = responseAsJson;
+}
+
+
+function openUsersCardHTML() {
+    return /*html*/ `
+        <div id="card-details" class="card-details-content">
+            <div class="close-button-container">
+                <img onclick="closeCardDetails()" src="img/x-mark-24.png" title="Go Back">
+            </div>
+        </div>
+    </div>`
 }

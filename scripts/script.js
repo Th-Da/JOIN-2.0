@@ -89,7 +89,7 @@ async function init() {
     await includeHTML();
     loadFromLocalStorage();
 
-    //    await loadUrlUsers();
+    await loadUrlUsers();
 }
 
 // stops event propagation
