@@ -20,44 +20,54 @@
 
     <div class="main-container" id="mainContainer">
         <div w3-include-html="./templates/navbar.html"></div>
-        
+
         <div class="tasks-main-container">
+            <div class="tasks-left-container">
+                <div class="tasks-container">
+                    <div class="tasks-headline-container">
+                        TO DO
+                    </div>
+                    <div class="tasks-list-container" id="todo-list" ondrop="moveTo('todo')"
+                        ondragover="allowDrop(event); getId(this)">
 
-            <div class="tasks-container">
-                <div class="tasks-headline-container">
-                    TO DO
+                    </div>
                 </div>
-                <div class="tasks-list-container" id="todo-list" ondrop="moveTo('todo')" ondragover="allowDrop(event); getId(this)">
-                    
-                </div>
-            </div>
-        
-            <div class="tasks-container">
-                <div class="tasks-headline-container">
-                    IN PROGRESS
-                </div>
-                <div class="tasks-list-container" id="in-progress-list" ondrop="moveTo('in-progress')" ondragover="allowDrop(event); getId(this)">
 
-                </div>
-            </div>
-        
-            <div class="tasks-container">
-                <div class="tasks-headline-container">
-                    TESTING
-                </div>
-                <div class="tasks-list-container" id="testing-list" ondrop="moveTo('testing')" ondragover="allowDrop(event); getId(this)">
-                </div>
-            </div>
-        
-            <div class="tasks-container">
-                <div class="tasks-headline-container">
-                    DONE
-                </div>
-                <div class="tasks-list-container" id="done-list" ondrop="moveTo('done')" ondragover="allowDrop(event); getId(this)">
+                <div class="tasks-container">
+                    <div class="tasks-headline-container">
+                        IN PROGRESS
+                    </div>
+                    <div class="tasks-list-container" id="in-progress-list" ondrop="moveTo('in-progress')"
+                        ondragover="allowDrop(event); getId(this)">
 
+                    </div>
                 </div>
             </div>
-        
+            <div class="tasks-right-container">
+                <div class="tasks-container">
+                    <div class="tasks-headline-container">
+                        TESTING
+                    </div>
+                    <div class="tasks-list-container" id="testing-list" ondrop="moveTo('testing')"
+                        ondragover="allowDrop(event); getId(this)">
+                    </div>
+                </div>
+
+                <div class="tasks-container">
+                    <div class="tasks-headline-container">
+                        DONE
+                    </div>
+                    <div class="tasks-list-container" id="done-list" ondrop="moveTo('done')"
+                        ondragover="allowDrop(event); getId(this)">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
         </div>
         <div id="card-details-container" class="d-none fade-out primary" onclick="closeCardDetails()">
         </div>

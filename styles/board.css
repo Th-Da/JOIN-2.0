@@ -1,14 +1,29 @@
 .tasks-main-container {
     display: flex;
+    height: 100vh;
+    width: 100%;
+    margin-left: 155px;
+    margin-right: 5px;
+}
+
+.tasks-left-container {
+    display: flex;
     justify-content: space-evenly;
     height: 100vh;
     width: 100%;
-    margin-left: 160px;
-    margin-right: 10px;
+}
+
+.tasks-right-container {
+    display: flex;
+    justify-content: space-evenly;
+    height: 100vh;
+    width: 100%;
 }
 
 .tasks-container {
-    width: 22%;
+    width: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     flex-direction: column;
 }

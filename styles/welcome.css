@@ -1,0 +1,21 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-card {
+    height: 300px;
+    width: 500px;
+    background-color: #F4F3FB;
+    outline: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 0 13px rgb(0 0 0 / 10%);
+    display: flex;
+}
+
+.welcome-card-left-container {
+    background-color: #1E3190;
+    border-radius: 10px;
+}
