@@ -1,13 +1,13 @@
 let tasksToDos = [
     {
-        'id':'0',
-        'currentStatus': 'todo-list', 
+        'id': '0',
+        'currentStatus': 'todo-list',
         'title': 'Wäsche waschen',
-        'urgency': 'Urgent',
+        'urgency': 'High',
         'category': 'Management',
         'createdDate': '19.03.2022',
         'dueDate': '22.08.22',
-        'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae odio minima, culpa ea?',
+        'description': 'Endlich mal den Berg an Wäsche machen',
         'collaborators': [
             {
                 'name': 'Tobias Fernkorn',
@@ -22,14 +22,14 @@ let tasksToDos = [
         ],
     },
     {
-        'id':'1',
-        'currentStatus': 'todo-list', 
+        'id': '1',
+        'currentStatus': 'todo-list',
         'title': 'Auto Kaufen',
-        'urgency': 'Medium',
+        'urgency': 'Intermediate',
         'category': 'Sales',
         'createdDate': '1.02.2022',
         'dueDate': '2.09.22',
-        'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae odio minima, culpa ea?',
+        'description': 'Muss mir noch den neuen Tesla zulegen',
         'collaborators': [
             {
                 'name': 'Tobias Fernkorn',
@@ -39,14 +39,14 @@ let tasksToDos = [
         ],
     },
     {
-        'id':'2',
-        'currentStatus': 'todo-list', 
+        'id': '2',
+        'currentStatus': 'todo-list',
         'title': 'Pizza Essen',
-        'urgency': 'Urgent',
-        'category': 'Ich',
+        'urgency': 'High',
+        'category': 'Software Development',
         'createdDate': '29.04.2022',
         'dueDate': '23.11.22',
-        'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae odio minima, culpa ea?',
+        'description': 'Einmal die 12 mit doppelt Käse',
         'collaborators': [
             {
                 'name': 'Sir Cow',
@@ -61,14 +61,14 @@ let tasksToDos = [
         ],
     },
     {
-        'id':'3',
-        'currentStatus': 'in-progress-list', 
+        'id': '3',
+        'currentStatus': 'in-progress-list',
         'title': 'Kuh Föhnen',
-        'urgency': 'Urgent',
-        'category': 'Management',
+        'urgency': 'Low',
+        'category': 'Human Resourches',
         'createdDate': '19.03.2022',
         'dueDate': '22.08.22',
-        'description': 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae odio minima, culpa ea?',
+        'description': 'Auch eine Kuh muss geföhnt werden.',
         'collaborators': [
             {
                 'name': 'Tobias Fernkorn',
@@ -83,11 +83,13 @@ let tasksToDos = [
         ],
     },
 ];
+let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list']; //used to empty boards and change status
 
 async function init() {
     await includeHTML();
-    await loadUrlUsers();
+    loadFromLocalStorage();
 
+    //    await loadUrlUsers();
 }
 
 // stops event propagation
@@ -95,8 +97,29 @@ function stopPropagation(event) {
     event.stopPropagation();
 }
 
+//creates card details before fade in
+function openCardDetails(id) {
+    let task = tasksToDos[id]
+    let container = document.getElementById("card-details-container");
+    container.innerHTML = fillCardDetailsHTML(task);
+    fillCardDetailsButtonsContainer(task, id);
+    fillCardDeatilCollaborators(id);
+    createUrgentBoarder(id, document.getElementById("card-details"))
+    fadeIn();
+}
+
+//creates collaborator details on detail card before fade in
+function fillCardDeatilCollaborators(id) {
+    let collaborators = tasksToDos[id]['collaborators'];
+    for (let i = 0; i < collaborators.length; i++) {
+        const collaborator = collaborators[i];
+        document.getElementById('assignee-container').innerHTML += fillCardDeatilCollaboratorsHTML(collaborator)
+        ;
+    } 
+}
+
 // Fades objekts in with removing d-none and adds opacity transition
-function openCardDetails() {
+function fadeIn() {
     document.getElementById('card-details-container').classList.remove('d-none');
     setTimeout(() => {
         document.getElementById('card-details-container').classList.remove('fade-out')
@@ -109,7 +132,89 @@ function closeCardDetails() {
     setTimeout(() => {
         document.getElementById('card-details-container').classList.add('d-none')
     }, 500);
+}
 
+//add colored border to cards, depending on the urgent status
+function createUrgentBoarder(i, container) {
+    let task = tasksToDos[i];
+    if (task['currentStatus'] === 'done-list') {
+        container.classList.add("done")
+    } else if (task['urgency'] === 'High') {
+        container.classList.add("urgent")    
+        } else if (task['urgency'] === 'Intermediate') {
+            container.classList.add("medium") 
+        } else if (task['urgency'] === 'Low') {
+            container.classList.add("low") 
+        }
+}
+
+function fillCardDetailsButtonsContainer(task, id) {
+    container = document.getElementById('button-container');
+    container.innerHTML = '';
+    if(task['currentStatus'] === 'todo-list') {
+        container.innerHTML += addCurrentStatusTitleHTML('To Do');
+        container.innerHTML += addForwardButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    } else if (task['currentStatus'] === 'in-progress-list') {
+        container.innerHTML += addBackButtonHTML(id);
+        container.innerHTML += addCurrentStatusTitleHTML('In Progress');
+        container.innerHTML += addForwardButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    } else if (task['currentStatus'] === 'testing-list') {
+        container.innerHTML += addBackButtonHTML(id);
+        container.innerHTML += addCurrentStatusTitleHTML('Testing');
+        container.innerHTML += addForwardButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    } else {
+        container.innerHTML += addBackButtonHTML(id);
+        container.innerHTML += addCurrentStatusTitleHTML('Done');
+        container.innerHTML += addDeleteButtonHTML(id);
+        container.innerHTML += addGoBackButtonHTML(id);
+    }
+}
+
+function nextStatus(id) {
+    let task = tasksToDos[id];
+    let currentStatus = task['currentStatus'];
+    let currentStatusIndex = boardListIds.indexOf(currentStatus);
+    let newStatusIndex = currentStatusIndex + 1;
+    task['currentStatus'] = boardListIds[newStatusIndex];
+    fillCardDetailsButtonsContainer(task, id);
+    saveToLocalStorage();
+    checkCurrentHtmlLocationAndUpdateCards()
+}
+
+function lastStatus(id) {
+    let task = tasksToDos[id];
+    let currentStatus = task['currentStatus'];
+    let currentStatusIndex = boardListIds.indexOf(currentStatus);
+    let newStatusIndex = currentStatusIndex - 1;
+    task['currentStatus'] = boardListIds[newStatusIndex];
+    fillCardDetailsButtonsContainer(task, id);
+    saveToLocalStorage();
+    checkCurrentHtmlLocationAndUpdateCards()
+}
+
+function deleteTask(id) {
+    tasksToDos.splice(id, 1);
+    saveToLocalStorage();
+    checkCurrentHtmlLocationAndUpdateCards();
+    closeCardDetails();
+}
+
+function checkCurrentHtmlLocationAndUpdateCards() {
+    if(document.getElementById('card-details-container').classList.contains('primary')) {
+        loadTasksToBoard();
+    } else {
+        loadTasksToBacklog()
+    }
+}
+
+function toggleNavbar() {
+    document.getElementById('navbar').classList.toggle('show-navbar');
+    setTimeout(() => {
+        document.getElementById('navbar').classList.remove('show-navbar');
+    }, 4000)
 }
 
 //save to LocalStorage
@@ -119,10 +224,77 @@ function saveToLocalStorage() {
 }
 
 
-//load to LocalStorage
-function loadToLocalStorage() {
+//load from LocalStorage
+function loadFromLocalStorage() {
     let tasksToDosAsText = localStorage.getItem('tasksToDos');
-    if (tasksToDos) {
+    if (tasksToDosAsText) {
         tasksToDos = JSON.parse(tasksToDosAsText);
     }
+}
+
+//Snippets
+function fillCardDetailsHTML(task) {
+    return /*html*/ `
+    <div class="card-details-content" id="card-details" onclick="stopPropagation(event)">
+            <div class="card-details-content-left">
+                <h2>${task['title']}</h2>
+                <span><b>Urgency:</b> ${task['urgency']}</span>
+                <span><b>Category:</b> ${task['category']}</span>
+                <div class="deadline-container">
+                    <span><b>Created On:</b> ${task['createdDate']}</span>
+                    <span><b>Due Date:</b> ${task['dueDate']}</span>
+                </div>
+                <span><b>Task Description:</b></span>
+                <span class="card-details-description">${task['description']}</span>
+            </div>
+            <div class="card-details-content-right">
+                <div class="card-details-button-container" id="button-container">
+                </div>
+                <div id="assignee-container">
+                </div>
+            </div>
+        </div>
+`
+}
+
+function fillCardDeatilCollaboratorsHTML(collaborator) {
+    return /*html*/ `
+    <div class="assignee-container">
+       <img src="${collaborator['img']}" alt="">
+       <div class="person-data-container">
+           <div class="assignee-name">${collaborator['name']}</div>
+           <div class="assignee-email">${collaborator['email']}</div>
+       </div>
+   </div>
+`
+}
+
+function addBackButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/arrow-97-24.png" alt="" title="Last Status" onclick="lastStatus('${id}')">
+    `
+}
+
+function addCurrentStatusTitleHTML(title){
+    return /*html*/ `
+    <span><b>${title}</b></span>
+    `
+}
+
+function addForwardButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/arrow-32-24.png" alt="" title="Next Status" onclick="nextStatus('${id}')">
+    `
+}
+
+function addGoBackButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/close-window-24.png" alt="" title="Go Back" onclick="closeCardDetails('${id}')">
+    `
+}
+
+function addDeleteButtonHTML(id) {
+    return /*html*/ `
+    <img src="img/trash-2-24.png" alt="" title="Delete Task" onclick="deleteTask('${id}')">
+    `
 }

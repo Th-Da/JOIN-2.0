@@ -7,8 +7,23 @@ body {
     transition: opacity 0.5s ease-in-out !important;
 }
 
+.urgent {
+border-left: 5px solid #FFABAB !important;
+}
+
+.medium {
+    border-left: 5px solid #FFF5BA !important;
+}
+
+.low {
+    border-left: 5px solid #6EB5FF !important;
+}
+
+.done {
+    border-left: 5px solid #AFF8DB !important;
+}
+
 .main-container {
-    /* height: 50vh; */
     display: flex;
 }
 
@@ -20,6 +35,8 @@ body {
     height: 100vh;
     position: fixed !important;
     background-color: #1E3190;
+    left: 0;
+    transition: left 0.5s ease-in-out;
 }
 
 .navbar-hr {
@@ -59,7 +76,44 @@ body {
 .slected-nav-item {
     width: 7px;
     height: 25px;
+}
 
+/* mobile nav */
+.mobile-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: #1E3190;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.burger-container {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 24px;
+}
+
+.burger-line {
+    height: 4px;
+    width: 25px;
+    border-radius: 2px;
+    margin: 3px 0;
+    background-color: white;
+}
+
+.show-navbar {
+    left: 0 !important;
+}
+
+.active {
+    background-color: #4e95fd;
+    color: white;
 }
 
 .headline-container {
@@ -75,9 +129,7 @@ body {
     color: #1E3190;
 }
 
-/* Oped Card Deatials Style */
-
-
+/* Open Card Deatials Style */
 #card-details-container {
     position: absolute;
     left: 0;
@@ -96,7 +148,6 @@ body {
     min-width: 680px;
     background-color: #F4F3FB;
     border: 1px solid lightgray;
-    border-left: 5px solid yellow;
     border-radius: 10px;
     box-shadow: 0px 0px 40px -2px #787878;
     display: flex;
@@ -112,9 +163,15 @@ body {
 .card-details-button-container img {
     width: 16px;
     height: 16px;
+    margin-top: 4px;
     margin-left: 8px;
     margin-bottom: 16px;
     cursor: pointer;
+}
+
+.card-details-button-container span {
+    color: #1E3190;
+    margin-left: 8px;
 }
 
 .card-details-content-left {
@@ -164,8 +221,27 @@ body {
     color: #1E3190;
 }
 
+@media (min-width:1000px) {
+    .mobile-nav {
+        display: none;
+    }
+}
 
-@media (max-width: 1024px) {}
+@media (max-width: 1000px) {
+    .navbar {
+        left: -150px;
+    }
+
+    .tasks-main-container {
+        margin-left: 10px !important;
+        margin-top: 50px;
+    }
+
+    .backlog-container {
+        margin-left: 0 !important;
+        margin-top: 50px;
+    }
+}
 
 
 /* fonts */
