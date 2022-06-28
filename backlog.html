@@ -8,6 +8,7 @@
     <title>Document</title>
 
     <script src="scripts/script.js"></script>
+    <script src="scripts/board.js"></script>
     <script src="scripts/backlog.js"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/backlog.css">
@@ -32,41 +33,7 @@
                 </div>
                 <div id="backlog-cards">
                 </div>
-                <div id="card-details-container" class="d-none fade-out" onclick="closeCardDetails()">
-                    <div class="card-details-content" onclick="stopPropagation(event)">
-                        <div class="card-details-content-left">
-                            <h2>Title of task</h2>
-                            <span><b>Urgency:</b> Medium</span>
-                            <span><b>Category:</b> Management</span>
-                            <div class="deadline-container">
-                                <span><b>Created On:</b> 19.05.21</span>
-                                <span><b>Due Date:</b> 27.8.22</span>
-                            </div>
-                            <span><b>Task Description:</b></span>
-                            <span class="card-details-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                Recusandae odio minima, culpa ea?</span>
-                        </div>
-                        <div class="card-details-content-right">
-                            <div class="card-details-button-container">
-                                <img src="img/arrow-32-24.png" alt="" title="Task Done">
-                                <img src="img/x-mark-24.png" alt="" title="Go Back" onclick="closeCardDetails()">
-                            </div>
-                            <div class="assignee-container">
-                                <img src="img/Profile-Pic-Tobi.PNG" alt="">
-                                <div class="person-data-container">
-                                    <div class="assignee-name">Tobias Fernkorn</div>
-                                    <div class="assignee-email">bieberbutzemann@fake.com</div>
-                                </div>
-                            </div>
-                            <div class="assignee-container">
-                                <img src="img/sir-cow.png" alt="">
-                                <div class="person-data-container">
-                                    <div class="assignee-name">Sir Cow</div>
-                                    <div class="assignee-email">laktoseinteolleranz@kuh.com</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="card-details-container" class="d-none fade-out secondary" onclick="closeCardDetails()">
                 </div>
             </div>
 

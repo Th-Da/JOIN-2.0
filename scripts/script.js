@@ -181,7 +181,7 @@ function nextStatus(id) {
     task['currentStatus'] = boardListIds[newStatusIndex];
     fillCardDetailsButtonsContainer(task, id);
     saveToLocalStorage();
-    loadTasksToBoard();
+    checkCurrentHtmlLocationAndUpdateCards()
 }
 
 function lastStatus(id) {
@@ -192,14 +192,22 @@ function lastStatus(id) {
     task['currentStatus'] = boardListIds[newStatusIndex];
     fillCardDetailsButtonsContainer(task, id);
     saveToLocalStorage();
-    loadTasksToBoard();
+    checkCurrentHtmlLocationAndUpdateCards()
 }
 
 function deleteTask(id) {
     tasksToDos.splice(id, 1);
     saveToLocalStorage();
-    loadTasksToBoard();
+    checkCurrentHtmlLocationAndUpdateCards();
     closeCardDetails();
+}
+
+function checkCurrentHtmlLocationAndUpdateCards() {
+    if(document.getElementById('card-details-container').classList.contains('primary')) {
+        loadTasksToBoard();
+    } else {
+        loadTasksToBacklog()
+    }
 }
 
 //save to LocalStorage
