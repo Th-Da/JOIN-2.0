@@ -43,8 +43,15 @@ function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, da
         'dueDate': dueDates,
         'category': categorys,
         'urgency': urgencys,
-        'createdDate': date
-    });
+        'createdDate': date,
+        'collaborators': [
+            {
+                'name': '',
+                'email': '',
+                'img': ''
+            }
+        ],
+    },);
 }
 
 
