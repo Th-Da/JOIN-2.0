@@ -8,21 +8,6 @@ async function initBoard() {
 }
 
 function loadTasks() {
-    // if (currentMouseoverId) {
-    //     var container = document.getElementById(currentMouseoverId); // used for drag and drop
-    //     var status = tasksToDos.filter(t => t['currentStatus'] == currentMouseoverId);
-    //     container.innerHTML = ``;
-    // } else {
-    //     var container = document.getElementById('todo-list');
-    //     container.innerHTML = ``;
-    //     var status = tasksToDos;
-    // }
-    // for (let i = 0; i < status.length; i++) {
-    //     const task = status[i];
-    //     let collaborators = task['collaborators'];
-    //     container.innerHTML += createToDoTaskCardHTML(task, i);
-    //     insertTodoCollaboratorsToCard(collaborators, i);
-    // }
     emptyBoardLists();
     for (let i = 0; i < tasksToDos.length; i++) {
         const task = tasksToDos[i];
@@ -64,8 +49,8 @@ function allowDrop(ev) {
 
 function moveTo() {
     tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
-    // saveToLocalStorage();
-    // loadToLocalStorage();
+    saveToLocalStorage();
+    loadToLocalStorage();
     setTimeout(loadTasks, 1000);
     console.log(tasksToDos);
 }
