@@ -7,7 +7,7 @@ let tasksToDos = [
         'category': 'Management',
         'createdDate': '19.03.2022',
         'dueDate': '22.08.22',
-        'description': 'Endlich mal den Berg an Wäsche machen',
+        'description': 'Endlich mal den Berg an Wäsche machen, loremlkulaskdj laksjfhlk lkjsaölk jkahljkynm cyxzwqkj sclkjcpiuw',
         'collaborators': [
             {
                 'name': 'Tobias Fernkorn',
