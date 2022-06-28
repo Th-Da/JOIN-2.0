@@ -194,3 +194,43 @@
     width: 200px;
     font-weight: bold;
 }
+
+@media (max-width:700px) {
+    .add-task-container-bg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+
+    .add-task-container-left {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .add-task-container-right {
+        padding: 0;
+        width: 100%;
+    }
+
+    .width-responsive {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .buttons {
+        margin-top: 150px;
+        margin-bottom: 15px;
+    }
+
+    .button_plus {
+        margin-left: 9%;
+        width: 40px;
+        height: 40px;
+    }
+}
