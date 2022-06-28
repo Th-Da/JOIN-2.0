@@ -210,6 +210,13 @@ function checkCurrentHtmlLocationAndUpdateCards() {
     }
 }
 
+function toggleNavbar() {
+    document.getElementById('navbar').classList.toggle('show-navbar');
+    setTimeout(() => {
+        document.getElementById('navbar').classList.remove('show-navbar');
+    }, 4000)
+}
+
 //save to LocalStorage
 function saveToLocalStorage() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);
