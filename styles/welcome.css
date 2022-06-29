@@ -5,6 +5,10 @@ body {
     align-items: center;
 }
 
+.opacity-zero {
+    opacity: 0;
+}
+
 .welcome-card {
     height: 300px;
     width: 500px;
@@ -13,6 +17,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 13px rgb(0 0 0 / 10%);
     display: flex;
+    margin: 15px;
 }
 
 .welcome-card-left-container {
@@ -89,4 +94,28 @@ body {
     padding-right: 18px;
     margin-right: 56px;
     margin-bottom: 24px;
+}
+
+@media (max-width:430px) {
+    .welcome-card {
+        flex-direction: column;
+        height: 385px;
+    }
+
+    .welcome-card-right-container {
+        width: 100%;
+    }
+
+    .welcome-card-left-container {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .welcome-card-left-container img {
+        margin-bottom: 24px;
+    }
+
+    #login {
+        margin-top: 24px;
+    }
 }
