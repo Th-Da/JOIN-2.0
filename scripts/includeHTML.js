@@ -10,21 +10,23 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
-/*     updateActivePage();
- */}
+    updateActivePage();
+}
 
-/* function updateActivePage() {
+function updateActivePage() {
     let active = window.location.pathname.split('/').pop();
-    let links = document.getElementsByClassName('slected-nav-item');
+    let linksActiveBar = document.getElementsByClassName('slected-nav-item');
+    let link = document.getElementsByClassName('nav-link');
     
-    for (let i = 0; i < links.length; i++) {
-        const link = links[i];
-        link.classList.remove('active');
-        link.ariaCurrent = null;
-        let path = link.href.split('/').pop(); 
+    for (let i = 0; i < linksActiveBar.length; i++) {
+        const linkActiveBar = linksActiveBar[i];
+        const activeLink = link[i];
+        linkActiveBar.classList.remove('active');
+        linkActiveBar.ariaCurrent = null;
+        let path = activeLink.getAttribute('href'); 
         if (active == path) {
-            link.classList.add('active');
-            link.ariaCurrent = "page";
+            linkActiveBar.classList.add('active');
+            activeLink.ariaCurrent = "page";
         }
     }
-} */
+}
