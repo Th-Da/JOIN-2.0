@@ -1,3 +1,6 @@
+let choosedUser = [];
+
+
 // Creates a new task
 function createNewTask() { // creat task button
     let titles = document.getElementById('input-field-title').value;
@@ -10,11 +13,8 @@ function createNewTask() { // creat task button
     if (titles, categorys, descriptions, urgencys == '') {
         alert('Please fill out all fields');
     } else {
-
         pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
-
         clearInputFields();
-
         saveToLocalStorage();
     }
 }
@@ -24,9 +24,12 @@ function createNewTask() { // creat task button
 function clearInputFields() {
     document.getElementById('input-field-title').value = '';
     document.getElementById('input-field-date').value = '';
-    document.getElementById('input-field-category').value = '';
     document.getElementById('input-field-description').value = '';
-    document.getElementById('input-field-urgency').value = '';
+
+    document.getElementById('user-image-1').classList.add('d-none');
+    document.getElementById('user-image-2').classList.add('d-none');
+    document.getElementById('user-image-3').classList.add('d-none');
+    document.getElementById('user-image-4').classList.add('d-none');
 }
 
 
@@ -40,24 +43,8 @@ function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, da
         'category': categorys,
         'urgency': urgencys,
         'createdDate': date,
-        'collaborators': [
-            {
-                'name': employees['0']['name'],
-                'email': employees['0']['email'],
-                'img': employees['0']['img']
-            }
-        ],
+        'collaborators': choosedUser,
     });
-}
-
-
-//The input is deleted from the input fields
-function cancelTheInput() { //cancel button
-    document.getElementById('input-field-title').value = '';
-    document.getElementById('input-field-date').value = '';
-    document.getElementById('input-field-category').value = '';
-    document.getElementById('input-field-description').value = '';
-    document.getElementById('input-field-urgency').value = '';
 }
 
 
@@ -83,6 +70,45 @@ function showUsers() {
 }
 
 
+//Choose the user and push in a array
+function chooseTheUser(u) {
+    let nameOfUser = document.getElementById('user-name' + u).innerHTML;
+    let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
+    let imgOfUser = document.getElementById('user-img' + u).src;
+
+    let checkUsers = choosedUser.indexOf(employees[u]);
+
+    if (checkUsers == -1) {
+        choosedUser.push({
+            'name': nameOfUser,
+            'email': emailOfUSer,
+            'img': imgOfUser
+        })
+    }
+    showUsersOnAddTask(u);
+}
+
+
+//show users on addtask
+function showUsersOnAddTask(u) {
+    if (employees[u]['name'] === "Leta Marshall") {
+        document.getElementById('user-image-1').classList.remove('d-none');
+    }
+
+    if (employees[u]['name'] === "Joachim Cancel") {
+        document.getElementById('user-image-2').classList.remove('d-none');
+    }
+
+    if (employees[u]['name'] === "Kirsten Büchler") {
+        document.getElementById('user-image-3').classList.remove('d-none');
+    }
+
+    if (employees[u]['name'] === "Miguel Olson") {
+        document.getElementById('user-image-4').classList.remove('d-none');
+    }
+}
+
+
 // HTML snippets
 function openUsersCardHTML() {
     return /*html*/`
@@ -100,9 +126,9 @@ function showUsersHTML(u) {
     return /*html*/`
         <div onclick="chooseTheUser(${u})" class="user-container-main">
             <div class="user-container">
-                <div class="img-user-container width-responsive"><img class="user-img" src="${employees[u]['img']}"></div>
-                <div class="assignee-user-name width-responsive"><b>Name:</b> ${employees[u]['name']}</div>
-                <div class="assignee-email width-responsive">E-Mail: ${employees[u]['email']}</div>
+                <div class="img-user-container width-responsive"><img id="user-img${u}" class="user-img" src="${employees[u]['img']}"></div>
+                <div class="assignee-user-name width-responsive">Name: <span id="user-name${u}">${employees[u]['name']}</span></div>
+                <div class="assignee-email width-responsive">E-Mail: <span id="user-email${u}">${employees[u]['email']}</span></div>
             </div>
         </div>
     `
