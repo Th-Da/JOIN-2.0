@@ -84,7 +84,28 @@ let tasksToDos = [
     },
 ];
 let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list']; //used to empty boards and change status
-
+let employees = [
+    {
+        'name': 'Leta Marshall',
+        'email': 'leta.marshall@example.com',
+        'img': 'https://randomuser.me/api/portraits/women/72.jpg'
+    },
+    {
+        'name': 'Joachim Cancel',
+        'email': 'joachim.Cancel@example.com',
+        'img': 'https://randomuser.me/api/portraits/men/89.jpg'
+    },
+    {
+        'name': 'Kirsten Büchler',
+        'email': 'kirsten.buchler@example.com',
+        'img': 'https://randomuser.me/api/portraits/women/69.jpg'
+    },
+    {
+        'name': 'Miguel Olson',
+        'email': 'miguel.olson@example.com',
+        'img': 'https://randomuser.me/api/portraits/men/40.jpg'
+    }
+];
 async function init() {
     await includeHTML();
     loadFromLocalStorage();
