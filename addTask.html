@@ -30,8 +30,8 @@
                 <div class="add-task-container-bg">
                     <div class="add-task-container-left">
                         <div class="input-field-headline width-responsive">TITLE</div>
-                        <div class="width-responsive"><input id="input-field-title" class="input-fields" placeholder="Type your title..."
-                                type="text"></div>
+                        <div class="width-responsive"><input id="input-field-title" class="input-fields"
+                                placeholder="Type your title..." type="text"></div>
                         <div class="input-field-headline width-responsive">CATEGORY</div>
                         <div class="width-responsive">
                             <select class="input-fields" id="input-field-category">
@@ -42,12 +42,15 @@
                             </select>
                         </div>
                         <div class="input-field-headline width-responsive">DESCRIPTION</div>
-                        <div class="width-responsive"><input id="input-field-description" class="input-field-discription"
-                                placeholder="Type your discription..." type="text"></div>
+                        <div class="width-responsive">
+                            <textarea id="input-field-description" class="input-field-discription"
+                                placeholder="Type your discription..."></textarea>
+                        </div>
                     </div>
                     <div class="add-task-container-right">
                         <div class="input-field-headline width-responsive">DUE DATE</div>
-                        <div class="width-responsive"><input id="input-field-date" class="input-fields" type="date"></div>
+                        <div class="width-responsive"><input id="input-field-date" class="input-fields" type="date">
+                        </div>
                         <div class="input-field-headline width-responsive">URGENCY</div>
                         <div class="width-responsive">
                             <select class="input-fields" id="input-field-urgency">
@@ -56,13 +59,15 @@
                                 <option>Low</option>
                             </select>
                         </div>
-                        <div onclick="openUsersCard()" class="button_plus"></div>
                         <div id="user-icon">
-                            <img src="https://randomuser.me/api/portraits/women/72.jpg" alt="">
-                            <img src="https://randomuser.me/api/portraits/men/89.jpg" alt="">
+                            <img class="d-none" id="user-image-1" src="https://randomuser.me/api/portraits/women/72.jpg">
+                            <img class="d-none" id="user-image-2" src="https://randomuser.me/api/portraits/men/89.jpg">
+                            <img class="d-none" id="user-image-3" src="https://randomuser.me/api/portraits/women/69.jpg">
+                            <img class="d-none" id="user-image-4" src="https://randomuser.me/api/portraits/men/40.jpg">
                         </div>
                         <div class="buttons width-responsive">
-                            <button onclick="cancelTheInput()" class="button-cancel">CANCEL</button>
+                            <button onclick="openUsersCard()" class="button-add">Add Employees</button>
+                            <button onclick="clearInputFields()" class="button-cancel">CANCEL</button>
                             <button onclick="createNewTask()" class="button-create-task">CREATE TASK</button>
                         </div>
                     </div>

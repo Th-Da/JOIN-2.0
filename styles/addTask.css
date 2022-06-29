@@ -45,57 +45,28 @@
     color: #1E3190;
     font-weight: bold;
 }
-
-.button_plus {
-    margin-top: 190px;
-    position: absolute;
-    width: 50px;
+  
+.button-add {
+    border: 0;
+    background-color: white;
+    border-radius: 5px;
     height: 50px;
-    background: #fff;
-    cursor: pointer;
-    border: 2px solid #1E3190;
-    border-radius: 999px;
+    margin-right: 20px;
+    color: #1E3190;
 }
-  
-.button_plus:after {
-    content: '';
-    position: absolute;
-    transform: translate(-50%, -50%);
-    height: 4px;
-    width: 50%;
-    background: #1E3190;
-    top: 50%;
-    left: 50%;
-}
-  
-.button_plus:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #1E3190;
-    height: 50%;
-    width: 4px;
-}
-  
-.button_plus:hover:before,
-.button_plus:hover:after {
-    background: #fff;
-    transition: 0.2s;
-}
-  
-.button_plus:hover {
+
+.button-add:hover {
     background-color: #1E3190;
-    transition: 0.2s;
+    color: white;
 }
 
 .button-cancel {
     border: 0;
     background-color: #F4F3FB;
     border-radius: 5px;
-    height: 40px;
+    height: 50px;
     margin-right: 20px;
+    color: #1E3190;
 }
 
 .button-cancel:hover{
@@ -108,7 +79,7 @@
     background-color: #1E3190;
     color: white;
     border-radius: 5px;
-    height: 40px;
+    height: 50px;
 }
 
 .button-create-task:hover{
@@ -117,7 +88,7 @@
 
 .buttons {
     width: 80%;
-    height: 55%;
+    height: 28%;
     display: flex;
     justify-content: flex-end;
     align-items: end;
@@ -127,13 +98,20 @@
     border: 1px solid lightgrey;
 }
 
+#user-icon {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-top: 58px;
+}
+
 #user-icon img {
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     border: 3px solid #1E3190;
-    margin-top: 12px;
-    margin-right: 6px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .card-details-user {
@@ -210,6 +188,7 @@
         flex-direction: column;
         align-items: center;
         height: 100%;
+        margin-bottom: 20px;
     }
 
     .add-task-container-left {
@@ -233,14 +212,15 @@
     }
 
     .buttons {
-        margin-top: 150px;
+        margin-top: 50px;
         margin-bottom: 15px;
     }
 
     .button_plus {
         margin-left: 9%;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
+        margin-top: 60px;
     }
 
     .card-details-user {
@@ -252,5 +232,28 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+    }
+
+    #user-icon {
+        width: 100%;
+    }
+
+    #user-icon img {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+@media (max-width:410px) {
+    #user-icon img {
+        height: 65px;
+        width: 65px;
+    }
+}
+
+@media (max-width:350px) {
+    #user-icon img {
+        height: 50px;
+        width: 50px;
     }
 }
