@@ -229,11 +229,17 @@ function checkCurrentHtmlLocationAndUpdateCards() {
     }
 }
 
+//shows navbar when in mobile mode and hide it after 4s
 function toggleNavbar() {
     document.getElementById('navbar').classList.toggle('show-navbar');
     setTimeout(() => {
         document.getElementById('navbar').classList.remove('show-navbar');
     }, 4000)
+}
+
+//opens loginpage
+function logout() {
+    window.location.replace('../welcome.html')
 }
 
 //save to LocalStorage

@@ -29,3 +29,12 @@ function checkIfLoginDataValid(userNameInUserdata, passwordInUserData) {
         document.getElementById('wrong-login-data-container').classList.remove('d-none')
     }
 }
+
+function enter() {
+    let input = document.getElementById('user-password');
+    input.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            login()
+        }
+    });
+}
