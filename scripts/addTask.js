@@ -76,9 +76,7 @@ function chooseTheUser(u) {
     let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
     let imgOfUser = document.getElementById('user-img' + u).src;
 
-    let checkUsers = choosedUser.indexOf(employees[u]);
-
-    if (checkUsers == -1) {
+    if (choosedUser[u].contains == 'Leta Marshall') {
         choosedUser.push({
             'name': nameOfUser,
             'email': emailOfUSer,
