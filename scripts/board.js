@@ -3,6 +3,7 @@ let currentMouseoverId;    // ---------^^-----------
 
 async function initBoard() {
     await includeHTML();
+    await downloadFromServer();
     loadFromLocalStorage();
     loadTasksToBoard();
 }
