@@ -1,0 +1,19 @@
+.about-help-container {
+    margin-left: 150px;
+    width: 100%;
+}
+
+.impressum {
+    background-color: #F4F3FB;
+    border-radius: 10px;
+    margin: 24px;
+    padding: 24px;
+}
+
+@media(max-width: 1000px) {
+
+    .about-help-container {
+        margin-left: 0 !important;
+        margin-top: 50px;
+    }
+}
