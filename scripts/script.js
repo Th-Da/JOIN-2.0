@@ -106,6 +106,9 @@ let employees = [
         'img': 'https://randomuser.me/api/portraits/men/40.jpg'
     }
 ];
+
+setURL('http://gruppe-260.developerakademie.net/smallest_backend_ever-master');
+
 async function init() {
     await includeHTML();
     loadFromLocalStorage();
