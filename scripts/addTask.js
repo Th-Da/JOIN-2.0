@@ -1,7 +1,12 @@
+/**
+ * The global Array
+ */
 let choosedUser = [];
 
 
-// Creates a new task
+/**
+ * This function creates a new task
+ */
 function createNewTask() { // creat task button
     let titles = document.getElementById('input-field-title').value;
     let dueDates = document.getElementById('input-field-date').value;
@@ -20,7 +25,9 @@ function createNewTask() { // creat task button
 }
 
 
-// clear the input fields
+/**
+ * This function clear the input field and delete the employees
+ */
 function clearInputFields() {
     document.getElementById('input-field-title').value = '';
     document.getElementById('input-field-date').value = '';
@@ -34,6 +41,16 @@ function clearInputFields() {
 
 
 //push in taskToDos Array
+/**
+ * This function pushed the content from the input field into an array
+ * 
+ * @param {string} titles - content from the input field from the function createNewTask
+ * @param {string} dueDates - content from the input field from the function createNewTask 
+ * @param {string} categorys - content from the input field from the function createNewTask 
+ * @param {string} descriptions - content from the input field from the function createNewTask 
+ * @param {string} urgencys - content from the input field from the function createNewTask 
+ * @param {string} date - content from the input field from the function createNewTask 
+ */
 function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date) {
     tasksToDos.push({
         'currentStatus': 'todo-list',
@@ -48,7 +65,9 @@ function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, da
 }
 
 
-// open user card in AddTask
+/**
+ * This function open the large user card in the category AddTask
+ */
 function openUsersCard() {
     fadeIn();
     let openCard = document.getElementById('card-details-container');
@@ -58,7 +77,9 @@ function openUsersCard() {
 }
 
 
-// The individual employees are displayed
+/**
+ * This function shows the individual employees in the large card
+ */
 function showUsers() {
 
     for (let u = 0; u < employees.length; u++) {
@@ -70,7 +91,11 @@ function showUsers() {
 }
 
 
-//Choose the user and push in a array
+/**
+ * In this function, you can pick a single employee and push it into an array
+ * 
+ * @param {variable} u - This is a variable and replaces a place in the array
+ */
 function chooseTheUser(u) {
     let nameOfUser = document.getElementById('user-name' + u).innerHTML;
     let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
@@ -87,7 +112,11 @@ function chooseTheUser(u) {
 }
 
 
-//show users on addtask
+/**
+ * The function show the selected employees
+ * 
+ * @param {variable} u - This is a variable and replaces a place in the array
+ */
 function showUsersOnAddTask(u) {
     if (employees[u]['name'] === "Leta Marshall") {
         document.getElementById('user-image-1').classList.remove('d-none');
@@ -108,6 +137,12 @@ function showUsersOnAddTask(u) {
 
 
 // HTML snippets
+
+/**
+ * This function return the HMTL
+ * 
+ * @returns - return the HTML for the openUsersCard function 
+ */
 function openUsersCardHTML() {
     return /*html*/`
     <div id="card-details" class="card-details-user">
@@ -120,6 +155,12 @@ function openUsersCardHTML() {
 }
 
 
+/**
+ * This function return the HTML
+ * 
+ * @param {variable} u - This is a variable and replaces a place in the array
+ * @returns - return the HTML for the showUsers function 
+ */
 function showUsersHTML(u) {
     return /*html*/`
         <div onclick="chooseTheUser(${u})" class="user-container-main">
