@@ -37,6 +37,7 @@ function clearInputFields() {
     document.getElementById('user-image-2').classList.add('d-none');
     document.getElementById('user-image-3').classList.add('d-none');
     document.getElementById('user-image-4').classList.add('d-none');
+
 }
 
 
@@ -87,6 +88,32 @@ function showUsers() {
         let showUsers = document.getElementById('card-details-users');
         
         showUsers.innerHTML += showUsersHTML(u);
+
+    }
+
+    showNotSelectedUser();
+}
+
+
+/**
+ * this function only shows the users who are still available
+ */
+function showNotSelectedUser() {
+    for (let s = 0; s < choosedUser.length; s++) {
+        const notSeleceted = choosedUser[s]['name'];
+        
+        if (notSeleceted == 'Leta Marshall') {
+            document.getElementById('user-container' + s).classList.add('user-inactive');
+        }
+        if (notSeleceted == 'Joachim Cancel') {
+            document.getElementById('user-container' + s).classList.add('user-inactive');
+        }
+        if (notSeleceted == 'Kirsten Büchler') {
+            document.getElementById('user-container' + s).classList.add('user-inactive');
+        }
+        if (notSeleceted == 'Miguel Olson') {
+            document.getElementById('user-container' + s).classList.add('user-inactive');
+        }
     }
 }
 
@@ -101,13 +128,12 @@ function chooseTheUser(u) {
     let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
     let imgOfUser = document.getElementById('user-img' + u).src;
 
-    if (choosedUser[u].contains == 'Leta Marshall') {
         choosedUser.push({
             'name': nameOfUser,
             'email': emailOfUSer,
             'img': imgOfUser
         })
-    }
+    
     showUsersOnAddTask(u);
 }
 
@@ -163,7 +189,7 @@ function openUsersCardHTML() {
  */
 function showUsersHTML(u) {
     return /*html*/`
-        <div onclick="chooseTheUser(${u})" class="user-container-main">
+        <div id="user-container${u}" onclick="chooseTheUser(${u})" class="user-container-main">
             <div class="user-container">
                 <div class="img-user-container width-responsive"><img id="user-img${u}" class="user-img" src="${employees[u]['img']}"></div>
                 <div class="assignee-user-name width-responsive">Name: <span id="user-name${u}">${employees[u]['name']}</span></div>

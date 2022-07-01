@@ -1,6 +1,10 @@
 let currentDraggedElement; // used for drag and drop
 let currentMouseoverId;    // ---------^^-----------
 
+
+/**
+ * board functions are loaded
+ */
 async function initBoard() {
     await includeHTML();
     await downloadFromServer();
@@ -8,7 +12,10 @@ async function initBoard() {
     loadTasksToBoard();
 }
 
-//load tasks to board
+
+/**
+ * load tasks to board
+ */
 function loadTasksToBoard() {
     emptyBoardLists();
     for (let i = 0; i < tasksToDos.length; i++) {
@@ -21,7 +28,10 @@ function loadTasksToBoard() {
     filterUrgentBorder();
 }
 
-//iterates through tasks in preparation for filtering
+
+/**
+ * iterates through tasks in preparation for filtering
+ */
 function filterUrgentBorder() {
     for (let i = 0; i < tasksToDos.length; i++) {
         let container = document.getElementById(i);
@@ -29,7 +39,13 @@ function filterUrgentBorder() {
     }
 }
 
-//insert collaborators to board cards
+
+/**
+ * insert collaborators to board cards
+ * 
+ * @param {string} collaborators - 
+ * @param {*} i 
+ */
 function insertTodoCollaboratorsToCard(collaborators, i) {
     for (let y = 0; y < collaborators.length; y++) {
         const collaborator = collaborators[y];
@@ -38,13 +54,17 @@ function insertTodoCollaboratorsToCard(collaborators, i) {
     }
 }
 
-//empty board in preparation for loading new cards
+
+/**
+ * empty board in preparation for loading new cards
+ */
 function emptyBoardLists() {
     for (let i = 0; i < boardListIds.length; i++) {
         const id = boardListIds[i];
         document.getElementById(id).innerHTML = '';
     }
 }
+
 
 // drag and drop functions
 

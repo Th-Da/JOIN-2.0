@@ -185,6 +185,11 @@
     font-weight: bold;
 }
 
+.user-inactive {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 @media (max-width:700px) {
     .add-task-container-bg {
         display: flex;
