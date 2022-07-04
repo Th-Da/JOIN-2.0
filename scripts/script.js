@@ -167,6 +167,7 @@ function createUrgentBoarder(i, container) {
         }
 }
 
+//creates buttons on detail card depending on their current status
 function fillCardDetailsButtonsContainer(task, id) {
     container = document.getElementById('button-container');
     container.innerHTML = '';
@@ -192,6 +193,7 @@ function fillCardDetailsButtonsContainer(task, id) {
     }
 }
 
+//moves task to next status
 function nextStatus(id) {
     let task = tasksToDos[id];
     let currentStatus = task['currentStatus'];
@@ -203,6 +205,7 @@ function nextStatus(id) {
     checkCurrentHtmlLocationAndUpdateCards()
 }
 
+//moves task to previous status
 function lastStatus(id) {
     let task = tasksToDos[id];
     let currentStatus = task['currentStatus'];
@@ -214,6 +217,7 @@ function lastStatus(id) {
     checkCurrentHtmlLocationAndUpdateCards()
 }
 
+//deletes Task
 function deleteTask(id) {
     tasksToDos.splice(id, 1);
     saveToLocalStorage();
@@ -221,6 +225,7 @@ function deleteTask(id) {
     closeCardDetails();
 }
 
+//checks request origin
 function checkCurrentHtmlLocationAndUpdateCards() {
     if(document.getElementById('card-details-container').classList.contains('primary')) {
         loadTasksToBoard();

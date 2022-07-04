@@ -5,6 +5,7 @@ let userData = [
     }
 ]
 
+//compares logindata with saved user data
 function login() {
     let userNameInUserdata = false;
     let passwordInUserData = false;
@@ -22,6 +23,7 @@ function login() {
     checkIfLoginDataValid(userNameInUserdata, passwordInUserData)
 }
 
+//checks if login data is valid
 function checkIfLoginDataValid(userNameInUserdata, passwordInUserData) {
     if (userNameInUserdata && passwordInUserData === true) {
         window.location.replace('../index.html')
@@ -30,6 +32,7 @@ function checkIfLoginDataValid(userNameInUserdata, passwordInUserData) {
     }
 }
 
+//runs login on keypress enter
 function enter() {
     let input = document.getElementById('user-password');
     input.addEventListener("keydown", function(event) {
