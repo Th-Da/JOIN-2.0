@@ -1,5 +1,6 @@
-function initBacklog() {
-    init();
+async function initBacklog() {
+    await includeHTML();
+    await downloadFromServer();
     loadFromLocalStorage();
     loadTasksToBacklog();
 }
