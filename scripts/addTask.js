@@ -82,16 +82,28 @@ function openUsersCard() {
  * This function shows the individual employees in the large card
  */
 function showUsers() {
+    let showUsers = document.getElementById('card-details-users');
 
     for (let u = 0; u < employees.length; u++) {
-        const users = employees[u];
-        let showUsers = document.getElementById('card-details-users');
-        
+        const employee = employees[u];
+        let userAlreadySelected = false;
+       if (choosedUser.length === 0) {
+        for (let i = 0; i < choosedUser.length; i++) {
+            const user = choosedUser[i];
+            console.log(user);
+        }
+       }
+       if (userAlreadySelected === false) {
         showUsers.innerHTML += showUsersHTML(u);
+       } else {
+        showUsers.innerHTML += showSelectedUsersHTML(u);
+       }
+        
+        
 
     }
 
-    showNotSelectedUser();
+    // showNotSelectedUser();
 }
 
 
@@ -190,6 +202,18 @@ function openUsersCardHTML() {
 function showUsersHTML(u) {
     return /*html*/`
         <div id="user-container${u}" onclick="chooseTheUser(${u})" class="user-container-main">
+            <div class="user-container">
+                <div class="img-user-container width-responsive"><img id="user-img${u}" class="user-img" src="${employees[u]['img']}"></div>
+                <div class="assignee-user-name width-responsive">Name: <span id="user-name${u}">${employees[u]['name']}</span></div>
+                <div class="assignee-email width-responsive">E-Mail: <span id="user-email${u}">${employees[u]['email']}</span></div>
+            </div>
+        </div>
+    `
+}
+
+function showSelectedUsersHTML(u) {
+    return /*html*/`
+        <div id="user-container${u}" onclick="removeTheUser(${u})" class="user-container-main user-inactive">
             <div class="user-container">
                 <div class="img-user-container width-responsive"><img id="user-img${u}" class="user-img" src="${employees[u]['img']}"></div>
                 <div class="assignee-user-name width-responsive">Name: <span id="user-name${u}">${employees[u]['name']}</span></div>
