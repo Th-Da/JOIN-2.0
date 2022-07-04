@@ -1,6 +1,6 @@
 .tasks-main-container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     margin-left: 155px;
     margin-right: 5px;
@@ -9,14 +9,14 @@
 .tasks-left-container {
     display: flex;
     justify-content: space-evenly;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
 }
 
 .tasks-right-container {
     display: flex;
     justify-content: space-evenly;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
 }
 
