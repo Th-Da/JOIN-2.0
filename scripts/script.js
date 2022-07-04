@@ -106,8 +106,12 @@ let employees = [
         'img': 'https://randomuser.me/api/portraits/men/40.jpg'
     }
 ];
+
+setURL('http://gruppe-260.developerakademie.net/smallest_backend_ever-master');
+
 async function init() {
     await includeHTML();
+    await downloadFromServer();
     loadFromLocalStorage();
 }
 
@@ -250,13 +254,13 @@ function logout() {
 //save to LocalStorage
 function saveToLocalStorage() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);
-    localStorage.setItem('tasksToDos', tasksToDosAsText);
+    backend.setItem('tasksToDos', tasksToDosAsText);
 }
 
 
 //load from LocalStorage
 function loadFromLocalStorage() {
-    let tasksToDosAsText = localStorage.getItem('tasksToDos');
+    let tasksToDosAsText = backend.getItem('tasksToDos');
     if (tasksToDosAsText) {
         tasksToDos = JSON.parse(tasksToDosAsText);
     }
