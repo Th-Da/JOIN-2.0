@@ -31,7 +31,11 @@ function createNewTask() { // creat task button
         pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
         clearInputFields();
         saveToLocalStorage();
-
+        setTimeout(() => {
+            window.close();
+        window.open("index.html");
+        }, 200)
+        
     }
 }
 
@@ -98,19 +102,19 @@ function showUsers() {
     for (let u = 0; u < employees.length; u++) {
         const employee = employees[u];
         let userAlreadySelected = false;
-       if (choosedUser.length !== 0) {
-        for (let i = 0; i < choosedUser.length; i++) {
-            const user = choosedUser[i];
-            if (employee['name'] === user['name']) {
-                userAlreadySelected = true;
+        if (choosedUser.length !== 0) {
+            for (let i = 0; i < choosedUser.length; i++) {
+                const user = choosedUser[i];
+                if (employee['name'] === user['name']) {
+                    userAlreadySelected = true;
+                }
             }
         }
-       }
-       if (userAlreadySelected === false) {
-        showUsers.innerHTML += showUsersHTML(u);
-       } else {
-        showUsers.innerHTML += showSelectedUsersHTML(u);
-       }
+        if (userAlreadySelected === false) {
+            showUsers.innerHTML += showUsersHTML(u);
+        } else {
+            showUsers.innerHTML += showSelectedUsersHTML(u);
+        }
     }
 
 }
@@ -126,12 +130,12 @@ function chooseTheUser(u) {
     let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
     let imgOfUser = document.getElementById('user-img' + u).src;
 
-        choosedUser.push({
-            'name': employees[u]['name'],
-            'email': employees[u]['email'],
-            'img': employees[u]['img']
-        })
-    
+    choosedUser.push({
+        'name': employees[u]['name'],
+        'email': employees[u]['email'],
+        'img': employees[u]['img']
+    })
+
     closeCardDetails();
     showUsersOnAddTask();
 }
@@ -144,12 +148,12 @@ function showUsersOnAddTask() {
     let showUsers = document.getElementById('user-icon');
 
     showUsers.innerHTML = '';
-        
-        for (let i = 0; i < choosedUser.length; i++) {
-            const userImg = choosedUser[i]['img'];
-            
-            showUsers.innerHTML += `<img src="${userImg}">`;
-        }
+
+    for (let i = 0; i < choosedUser.length; i++) {
+        const userImg = choosedUser[i]['img'];
+
+        showUsers.innerHTML += `<img src="${userImg}">`;
+    }
 }
 
 
