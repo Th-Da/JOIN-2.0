@@ -46,10 +46,7 @@ function clearInputFields() {
     document.getElementById('input-field-date').value = '';
     document.getElementById('input-field-description').value = '';
 
-    document.getElementById('user-image-1').classList.add('d-none');
-    document.getElementById('user-image-2').classList.add('d-none');
-    document.getElementById('user-image-3').classList.add('d-none');
-    document.getElementById('user-image-4').classList.add('d-none');
+    showUsersOnAddTask();
 
 }
 
@@ -115,31 +112,7 @@ function showUsers() {
        }
     }
 
-    // showNotSelectedUser();
 }
-
-
-/**
- * this function only shows the users who are still available
- */
-// function showNotSelectedUser() {
-//     for (let s = 0; s < choosedUser.length; s++) {
-//         const notSeleceted = choosedUser[s]['name'];
-        
-//         if (notSeleceted == 'Leta Marshall') {
-//             document.getElementById('user-container' + s).classList.add('user-inactive');
-//         }
-//         if (notSeleceted == 'Joachim Cancel') {
-//             document.getElementById('user-container' + s).classList.add('user-inactive');
-//         }
-//         if (notSeleceted == 'Kirsten Büchler') {
-//             document.getElementById('user-container' + s).classList.add('user-inactive');
-//         }
-//         if (notSeleceted == 'Miguel Olson') {
-//             document.getElementById('user-container' + s).classList.add('user-inactive');
-//         }
-//     }
-// }
 
 
 /**
@@ -159,45 +132,22 @@ function chooseTheUser(u) {
         })
     
     closeCardDetails();
-    showUsersOnAddTask(u);
+    showUsersOnAddTask();
 }
 
-// function chooseTheUser(u) {
-//     let nameOfUser = document.getElementById('user-name' + u).innerHTML;
-//     let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
-//     let imgOfUser = document.getElementById('user-img' + u).src;
-
-//         choosedUser.push({
-//             'name': nameOfUser,
-//             'email': emailOfUSer,
-//             'img': imgOfUser
-//         })
-    
-//     closeCardDetails();
-//     showUsersOnAddTask(u);
-// }
 
 
-/**
- * The function show the selected employees
- * 
- * @param {variable} u - This is a variable and replaces a place in the array
- */
-function showUsersOnAddTask(u) {
-    if (employees[u]['name'] === "Leta Marshall") {
-        document.getElementById('user-image-1').classList.remove('d-none');
-    }
+function showUsersOnAddTask() {
+    let showUsers = document.getElementById('user-icon');
 
-    if (employees[u]['name'] === "Joachim Cancel") {
-        document.getElementById('user-image-2').classList.remove('d-none');
-    }
-
-    if (employees[u]['name'] === "Kirsten Büchler") {
-        document.getElementById('user-image-3').classList.remove('d-none');
-    }
-
-    if (employees[u]['name'] === "Miguel Olson") {
-        document.getElementById('user-image-4').classList.remove('d-none');
+    if (choosedUser.length == 0) {
+        showUsers.innerHTML = '';
+    } else {
+        for (let i = 0; i < choosedUser.length; i++) {
+            const userImg = choosedUser[i]['img'];
+            
+            showUsers.innerHTML += `<img src="${userImg}">`;
+        }
     }
 }
 
