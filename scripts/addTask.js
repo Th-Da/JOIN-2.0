@@ -3,6 +3,16 @@
  */
 let choosedUser = [];
 
+async function initNewTask() {
+    await includeHTML();
+    await downloadFromServer();
+    loadFromLocalStorage();
+    setCurrentDateToInputField();
+}
+
+function setCurrentDateToInputField() {
+    document.getElementById('input-field-date').value = new Date().toISOString().substring(0, 10);
+}
 
 /**
  * This function creates a new task
@@ -15,14 +25,16 @@ function createNewTask() { // creat task button
     let urgencys = document.getElementById('input-field-urgency').value;
     let date = new Date().toDateString();
 
-    if (titles, categorys, descriptions, urgencys == '') {
+    if (titles === '') {
         alert('Please fill out all fields');
     } else {
         pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
         clearInputFields();
         saveToLocalStorage();
+
     }
 }
+
 
 
 /**
