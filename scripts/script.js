@@ -297,7 +297,7 @@ function fillCardDeatilCollaboratorsHTML(collaborator) {
        <img src="${collaborator['img']}" alt="">
        <div class="person-data-container">
            <div class="assignee-name">${collaborator['name']}</div>
-           <div class="assignee-email">${collaborator['email']}</div>
+           <div class="assignee-email"><a href="mailto:"${collaborator['email']}">${collaborator['email']}</div>
        </div>
    </div>
 `
