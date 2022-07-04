@@ -29,7 +29,7 @@
                 <h1>Add Task</h1>
                 <span class="join-phrase">Learning Management System Project</span>
             </div>
-            <div class="add-task-main-container">
+            <form class="add-task-main-container" onsubmit="createNewTask()">
                 <div class="add-task-container-bg">
                     <div class="add-task-container-left">
                         <div class="input-field-headline width-responsive">TITLE</div>
@@ -64,13 +64,13 @@
                         </div>
                         <div id="user-icon"></div>
                         <div class="buttons width-responsive">
-                            <button onclick="openUsersCard()" class="button-add">Add Employees</button>
-                            <button onclick="clearInputFields()" class="button-cancel">CANCEL</button>
-                            <button onclick="createNewTask()" class="button-create-task">CREATE TASK</button>
+                            <div onclick="openUsersCard()" class="button-add">Add Employees</div>
+                            <div onclick="clearInputFields()" class="button-cancel">CANCEL</div>
+                            <button  class="button-create-task">CREATE TASK</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </fom>
         </div>
         <div id="card-details-container" class="secondary fade-out d-none" onclick="closeCardDetails()"></div>
     </div>

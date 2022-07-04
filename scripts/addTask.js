@@ -31,10 +31,11 @@ function createNewTask() { // creat task button
         pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
         clearInputFields();
         saveToLocalStorage();
+        //bitte noch irgnorieren, wird noch angepasst
         setTimeout(() => {
             window.close();
         window.open("index.html");
-        }, 200)
+        }, 500)
         
     }
 }
