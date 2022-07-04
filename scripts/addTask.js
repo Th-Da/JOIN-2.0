@@ -29,6 +29,7 @@ function createNewTask() { // creat task button
  * This function clear the input field and delete the employees
  */
 function clearInputFields() {
+    choosedUser = [];
     document.getElementById('input-field-title').value = '';
     document.getElementById('input-field-date').value = '';
     document.getElementById('input-field-description').value = '';
@@ -140,14 +141,29 @@ function chooseTheUser(u) {
     let imgOfUser = document.getElementById('user-img' + u).src;
 
         choosedUser.push({
-            'name': nameOfUser,
-            'email': emailOfUSer,
-            'img': imgOfUser
+            'name': employees[u]['name'],
+            'email': employees[u]['email'],
+            'img': employees[u]['img']
         })
     
     closeCardDetails();
     showUsersOnAddTask(u);
 }
+
+// function chooseTheUser(u) {
+//     let nameOfUser = document.getElementById('user-name' + u).innerHTML;
+//     let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
+//     let imgOfUser = document.getElementById('user-img' + u).src;
+
+//         choosedUser.push({
+//             'name': nameOfUser,
+//             'email': emailOfUSer,
+//             'img': imgOfUser
+//         })
+    
+//     closeCardDetails();
+//     showUsersOnAddTask(u);
+// }
 
 
 /**
