@@ -87,10 +87,12 @@ function showUsers() {
     for (let u = 0; u < employees.length; u++) {
         const employee = employees[u];
         let userAlreadySelected = false;
-       if (choosedUser.length === 0) {
+       if (choosedUser.length !== 0) {
         for (let i = 0; i < choosedUser.length; i++) {
             const user = choosedUser[i];
-            console.log(user);
+            if (employee['name'] === user['name']) {
+                userAlreadySelected = true;
+            }
         }
        }
        if (userAlreadySelected === false) {
@@ -98,9 +100,6 @@ function showUsers() {
        } else {
         showUsers.innerHTML += showSelectedUsersHTML(u);
        }
-        
-        
-
     }
 
     // showNotSelectedUser();
@@ -110,24 +109,24 @@ function showUsers() {
 /**
  * this function only shows the users who are still available
  */
-function showNotSelectedUser() {
-    for (let s = 0; s < choosedUser.length; s++) {
-        const notSeleceted = choosedUser[s]['name'];
+// function showNotSelectedUser() {
+//     for (let s = 0; s < choosedUser.length; s++) {
+//         const notSeleceted = choosedUser[s]['name'];
         
-        if (notSeleceted == 'Leta Marshall') {
-            document.getElementById('user-container' + s).classList.add('user-inactive');
-        }
-        if (notSeleceted == 'Joachim Cancel') {
-            document.getElementById('user-container' + s).classList.add('user-inactive');
-        }
-        if (notSeleceted == 'Kirsten Büchler') {
-            document.getElementById('user-container' + s).classList.add('user-inactive');
-        }
-        if (notSeleceted == 'Miguel Olson') {
-            document.getElementById('user-container' + s).classList.add('user-inactive');
-        }
-    }
-}
+//         if (notSeleceted == 'Leta Marshall') {
+//             document.getElementById('user-container' + s).classList.add('user-inactive');
+//         }
+//         if (notSeleceted == 'Joachim Cancel') {
+//             document.getElementById('user-container' + s).classList.add('user-inactive');
+//         }
+//         if (notSeleceted == 'Kirsten Büchler') {
+//             document.getElementById('user-container' + s).classList.add('user-inactive');
+//         }
+//         if (notSeleceted == 'Miguel Olson') {
+//             document.getElementById('user-container' + s).classList.add('user-inactive');
+//         }
+//     }
+// }
 
 
 /**
@@ -146,6 +145,7 @@ function chooseTheUser(u) {
             'img': imgOfUser
         })
     
+    closeCardDetails();
     showUsersOnAddTask(u);
 }
 
@@ -183,7 +183,7 @@ function showUsersOnAddTask(u) {
  */
 function openUsersCardHTML() {
     return /*html*/`
-    <div id="card-details" class="card-details-user">
+    <div id="card-details" class="card-details-user" onclick="stopPropagation(event)">
         <div class="close-button-container">
             <img onclick="closeCardDetails()" src="img/x-mark-24.png" title="Go Back">
         </div>
@@ -213,7 +213,7 @@ function showUsersHTML(u) {
 
 function showSelectedUsersHTML(u) {
     return /*html*/`
-        <div id="user-container${u}" onclick="removeTheUser(${u})" class="user-container-main user-inactive">
+        <div id="user-container${u}" class="user-container-main user-inactive">
             <div class="user-container">
                 <div class="img-user-container width-responsive"><img id="user-img${u}" class="user-img" src="${employees[u]['img']}"></div>
                 <div class="assignee-user-name width-responsive">Name: <span id="user-name${u}">${employees[u]['name']}</span></div>
