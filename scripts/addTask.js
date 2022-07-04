@@ -136,7 +136,9 @@ function chooseTheUser(u) {
 }
 
 
-
+/**
+ * This function show the selected employees
+ */
 function showUsersOnAddTask() {
     let showUsers = document.getElementById('user-icon');
 
