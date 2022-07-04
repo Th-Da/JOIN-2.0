@@ -47,6 +47,7 @@ function clearInputFields() {
     document.getElementById('input-field-description').value = '';
 
     showUsersOnAddTask();
+    setCurrentDateToInputField();
 
 }
 
@@ -142,15 +143,13 @@ function chooseTheUser(u) {
 function showUsersOnAddTask() {
     let showUsers = document.getElementById('user-icon');
 
-    if (choosedUser.length == 0) {
-        showUsers.innerHTML = '';
-    } else {
+    showUsers.innerHTML = '';
+        
         for (let i = 0; i < choosedUser.length; i++) {
             const userImg = choosedUser[i]['img'];
             
             showUsers.innerHTML += `<img src="${userImg}">`;
         }
-    }
 }
 
 
