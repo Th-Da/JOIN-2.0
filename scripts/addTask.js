@@ -24,9 +24,9 @@ function createNewTask() { // creat task button
     let descriptions = document.getElementById('input-field-description').value;
     let urgencys = document.getElementById('input-field-urgency').value;
     let date = new Date().toDateString();
-
-    if (titles === '') {
-        alert('Please fill out all fields');
+    console.log(descriptions);
+    if (descriptions === '' || titles === '' || choosedUser.length === 0) {
+        alert('Please fill out all fields and choose Employees');
     } else {
         pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
         clearInputFields();
