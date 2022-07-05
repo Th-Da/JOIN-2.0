@@ -66,7 +66,7 @@
                         <div id="user-icon"></div>
                         <input type="hidden" required>
                         <div class="buttons width-responsive">
-                            <button onclick="openUsersCard()" class="button-add" type="button">Add Employees</button>
+                            <button onclick="openUsersCard()" class="button-add" id="add-user-button" type="button">Add Employees</button>
                             <button onclick="clearInputFields()" class="button-cancel" type="reset">CANCEL</button>
                             <button class="button-create-task" type="submit">CREATE TASK</button>
                         </div>
@@ -75,6 +75,9 @@
             </form>
         </div>
         <div id="card-details-container" class="secondary fade-out d-none" onclick="closeCardDetails()"></div>
+        <div class="d-none" id="loading-container">
+          <div class="lds-ring"><div></div><div></div><div></div><div></div></div>  
+        </div>
     </div>
 
 

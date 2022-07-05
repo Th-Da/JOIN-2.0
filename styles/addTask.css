@@ -46,7 +46,7 @@
     color: #1E3190;
     font-weight: bold;
 }
-  
+
 .button-add {
     border: 0;
     background-color: white;
@@ -60,6 +60,25 @@
     cursor: pointer;
     text-align: center;
     padding: 0 6px;
+    transition: all 0.2s ease-in;
+}
+
+.add-user-button {
+    animation: flashIn 200ms ease-in-out;
+    animation-fill-mode:backwards;
+    animation-iteration-count: 4;
+}
+
+@keyframes flashIn {
+    from {
+        background-color: white;
+        color: #1E3190;
+    }
+
+    to {
+        background-color: #1E3190;
+        color: white;
+    }
 }
 
 .button-add:hover {
@@ -83,7 +102,7 @@
     padding: 0 6px;
 }
 
-.button-cancel:hover{
+.button-cancel:hover {
     background-color: #1E3190;
     color: white;
 }
@@ -96,7 +115,7 @@
     height: 50px;
 }
 
-.button-create-task:hover{
+.button-create-task:hover {
     background-color: blue;
 }
 
@@ -178,7 +197,7 @@
 }
 
 .user-container:hover {
-    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1) ; 
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1);
 }
 
 .img-user-container {

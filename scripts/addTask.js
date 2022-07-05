@@ -26,17 +26,23 @@ async function createNewTask() { // creat task button
     let urgencys = document.getElementById('input-field-urgency').value;
     let date = new Date().toDateString();
     pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
+    if (choosedUser.length === 0) {
+        document.getElementById('add-user-button').classList.toggle('add-user-button')
+    } else {
+       showLoadingAnimation();
     await saveToLocalStorage();
     window.close();
-    window.open("index.html");
-
-    //bitte noch irgnorieren, wird noch angepasst
-    // setTimeout(() => {
-    //     window.close();
-    //     window.open("index.html");
-    // }, 500)
+    window.open("./index.html");  
+    }
+   
 }
 
+/**
+ * shows loading animation
+ */
+function showLoadingAnimation() {
+    document.getElementById('loading-container').classList.remove('d-none')
+}
 
 
 /**
