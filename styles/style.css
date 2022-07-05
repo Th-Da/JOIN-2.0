@@ -382,7 +382,11 @@ border-left: 5px solid #FFABAB !important;
     }
 
     .card-details-content {
-        margin-top: 50px;
+        margin-top: 70px;
+    }
+
+    #card-details-container {
+        min-height: 100vh;
     }
 }
 

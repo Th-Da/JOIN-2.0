@@ -72,6 +72,7 @@ function openCardDetails(id) {
     let task = tasksToDos[id]
     let container = document.getElementById("card-details-container");
     container.innerHTML = fillCardDetailsHTML(task);
+    window.scrollTo(0, 0)//Auslagern
     fillCardDetailsButtonsContainer(task, id);
     fillCardDeatilCollaborators(id);
     createUrgentBoarder(id, document.getElementById("card-details"))
