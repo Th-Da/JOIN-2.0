@@ -1,13 +1,20 @@
 /**
  * The global Array
  */
-let choosedUser = [];
+let choosedUser = [
+    {
+        'name': 'Leta Marshall',
+        'email': 'leta.marshall@example.com',
+        'img': 'https://randomuser.me/api/portraits/women/72.jpg'
+    }
+];
 
 async function initNewTask() {
     await includeHTML();
     await downloadFromServer();
     loadFromLocalStorage();
     setCurrentDateToInputField();
+    showUsersOnAddTask();
 }
 
 function setCurrentDateToInputField() {
@@ -26,12 +33,12 @@ function createNewTask() { // creat task button
     let date = new Date().toDateString();
     console.log(descriptions);
     pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
-        saveToLocalStorage();
-        //bitte noch irgnorieren, wird noch angepasst
-        setTimeout(() => {
-            window.close();
+    saveToLocalStorage();
+    //bitte noch irgnorieren, wird noch angepasst
+    setTimeout(() => {
+        window.close();
         window.open("index.html");
-        }, 500)
+    }, 500)
 }
 
 
@@ -93,11 +100,10 @@ function showUsers() {
     for (let u = 0; u < employees.length; u++) {
         const employee = employees[u];
         let userAlreadySelected = checkIfUserAlreadySelected(employee);
-        if (userAlreadySelected === false) {
-            showUsers.innerHTML += showUsersHTML(u);
-        } else {
+        if (userAlreadySelected)
             showUsers.innerHTML += showSelectedUsersHTML(u);
-        }
+        else
+            showUsers.innerHTML += showUsersHTML(u);
     }
 }
 
@@ -109,6 +115,19 @@ function checkIfUserAlreadySelected(employee) {
         }
     }
     return false
+}
+
+function removeUser(u) {
+    let UserToSearch = employees[u]['name'];
+    for (let i = 0; i < choosedUser.length; i++) {
+        const user = choosedUser[i];
+        if (UserToSearch === user['name']) {
+            choosedUser.splice(i, 1);
+            break
+        }
+    }
+    closeCardDetails();
+    showUsersOnAddTask();
 }
 
 /**
@@ -184,7 +203,7 @@ function showUsersHTML(u) {
 
 function showSelectedUsersHTML(u) {
     return /*html*/`
-        <div id="user-container${u}" class="user-container-main user-inactive">
+        <div id="user-container${u}" onclick="removeUser(${u})" class="user-container-main user-inactive">
             <div class="user-container">
                 <div class="img-user-container width-responsive"><img id="user-img${u}" class="user-img" src="${employees[u]['img']}"></div>
                 <div class="assignee-user-name width-responsive">Name: <span id="user-name${u}">${employees[u]['name']}</span></div>
