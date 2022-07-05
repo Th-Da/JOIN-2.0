@@ -206,7 +206,8 @@ function nextStatus(id) {
     task['currentStatus'] = boardListIds[newStatusIndex];
     fillCardDetailsButtonsContainer(task, id);
     saveToLocalStorage();
-    checkCurrentHtmlLocationAndUpdateCards()
+    checkCurrentHtmlLocationAndUpdateCards();
+    openCardDetails(id);
 }
 
 //moves task to previous status
@@ -218,7 +219,8 @@ function lastStatus(id) {
     task['currentStatus'] = boardListIds[newStatusIndex];
     fillCardDetailsButtonsContainer(task, id);
     saveToLocalStorage();
-    checkCurrentHtmlLocationAndUpdateCards()
+    checkCurrentHtmlLocationAndUpdateCards();
+    openCardDetails(id)
 }
 
 //deletes Task
@@ -252,9 +254,9 @@ function logout() {
 }
 
 //save to LocalStorage
-function saveToLocalStorage() {
+async function saveToLocalStorage() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);
-    backend.setItem('tasksToDos', tasksToDosAsText);
+   await backend.setItem('tasksToDos', tasksToDosAsText);
 }
 
 

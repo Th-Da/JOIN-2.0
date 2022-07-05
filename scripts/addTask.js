@@ -1,13 +1,7 @@
 /**
  * The global Array
  */
-let choosedUser = [
-    {
-        'name': 'Leta Marshall',
-        'email': 'leta.marshall@example.com',
-        'img': 'https://randomuser.me/api/portraits/women/72.jpg'
-    }
-];
+let choosedUser = [];
 
 async function initNewTask() {
     await includeHTML();
@@ -24,21 +18,23 @@ function setCurrentDateToInputField() {
 /**
  * This function creates a new task
  */
-function createNewTask() { // creat task button
+async function createNewTask() { // creat task button
     let titles = document.getElementById('input-field-title').value;
     let dueDates = document.getElementById('input-field-date').value;
     let categorys = document.getElementById('input-field-category').value;
     let descriptions = document.getElementById('input-field-description').value;
     let urgencys = document.getElementById('input-field-urgency').value;
     let date = new Date().toDateString();
-    console.log(descriptions);
     pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
-    saveToLocalStorage();
+    await saveToLocalStorage();
+    window.close();
+    window.open("index.html");
+
     //bitte noch irgnorieren, wird noch angepasst
-    setTimeout(() => {
-        window.close();
-        window.open("index.html");
-    }, 500)
+    // setTimeout(() => {
+    //     window.close();
+    //     window.open("index.html");
+    // }, 500)
 }
 
 
@@ -92,7 +88,7 @@ function openUsersCard() {
 
 
 /**
- * This function shows the individual employees in the large card
+ * This function shows the emlpoyees on details card
  */
 function showUsers() {
     let showUsers = document.getElementById('card-details-users');
@@ -107,6 +103,12 @@ function showUsers() {
     }
 }
 
+/**
+ * checks if user is already selectet
+ * 
+ * @param {Element} employee 
+ * @returns true or false
+ */
 function checkIfUserAlreadySelected(employee) {
     for (let i = 0; i < choosedUser.length; i++) {
         const user = choosedUser[i];
@@ -117,6 +119,12 @@ function checkIfUserAlreadySelected(employee) {
     return false
 }
 
+
+/**
+ * removes selected user from choosedUser
+ * 
+ * @param {index} u 
+ */
 function removeUser(u) {
     let UserToSearch = employees[u]['name'];
     for (let i = 0; i < choosedUser.length; i++) {
