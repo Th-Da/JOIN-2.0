@@ -44,6 +44,7 @@
     background-color: #F4F3FB;
     height: 100%;
     margin-bottom: 24px;
+    border-radius: 10px;
 }
 
 .task-card {
