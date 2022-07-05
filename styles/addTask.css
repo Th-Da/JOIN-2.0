@@ -202,6 +202,30 @@
     cursor: pointer;
 }
 
+@media (max-width:1185px) {
+    .buttons {
+        font-size: 13px;
+    }
+}
+
+@media (max-width:1070px) {
+    .buttons {
+        font-size: 11px;
+    }
+}
+
+@media (max-width:860px) {
+    .buttons {
+        font-size: 9px;
+    }
+}
+
+@media (max-width:765px) {
+    .buttons {
+        font-size: 8px;
+    }
+}
+
 @media (max-width:700px) {
     .add-task-container-bg {
         display: flex;
@@ -234,6 +258,7 @@
     .buttons {
         margin-top: 50px;
         margin-bottom: 15px;
+        font-size: 16px;
     }
 
     .button_plus {
@@ -269,11 +294,19 @@
         height: 65px;
         width: 65px;
     }
+
+    .buttons {
+        font-size: 13px;
+    }
 }
 
 @media (max-width:350px) {
     #user-icon img {
         height: 50px;
         width: 50px;
+    }
+
+    .buttons {
+        font-size: 11px;
     }
 }
