@@ -1,5 +1,5 @@
 let tasksToDos = [];
-let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list']; //used to empty boards and change status
+let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list'];
 let employees = [
     {
         'name': 'Leta Marshall',
@@ -25,18 +25,31 @@ let employees = [
 
 setURL('http://gruppe-260.developerakademie.net/smallest_backend_ever-master');
 
+/**
+ * initial load function
+ */
 async function init() {
     await includeHTML();
     await downloadFromServer();
     loadFromLocalStorage();
 }
 
-// stops event propagation
+
+/**
+ *  stops event propagation
+ * 
+ * @param {event} event 
+ */
 function stopPropagation(event) {
     event.stopPropagation();
 }
 
-//creates card details before fade in
+
+/**
+ * creates card details before fade in
+ * 
+ * @param {index} id 
+ */
 function openCardDetails(id) {
     let task = tasksToDos[id]
     let container = document.getElementById("card-details-container");
@@ -47,7 +60,12 @@ function openCardDetails(id) {
     fadeIn();
 }
 
-//creates collaborator details on detail card before fade in
+
+/**
+ * creates collaborator details on detail card before fade in
+ * 
+ * @param {index} id 
+ */
 function fillCardDeatilCollaborators(id) {
     let collaborators = tasksToDos[id]['collaborators'];
     for (let i = 0; i < collaborators.length; i++) {
@@ -57,7 +75,10 @@ function fillCardDeatilCollaborators(id) {
     } 
 }
 
-// Fades objekts in with removing d-none and adds opacity transition
+
+/**
+ * fades objekts in with removing class d-none and adds opacity transition
+ */
 function fadeIn() {
     document.getElementById('card-details-container').classList.remove('d-none');
     setTimeout(() => {
@@ -65,7 +86,10 @@ function fadeIn() {
     }, 50);
 }
 
-// Fades objekts out with opacity transition and adding d-none
+
+/**
+ * fades objekts out with opacity transition and adding class d-none
+ */
 function closeCardDetails() {
     document.getElementById('card-details-container').classList.add('fade-out');
     setTimeout(() => {
@@ -73,7 +97,13 @@ function closeCardDetails() {
     }, 500);
 }
 
-//add colored border to cards, depending on the urgent status
+
+/**
+ * adds colored border to cards depending on their urgent status
+ * 
+ * @param {index} i 
+ * @param {HTMLBodyElement} container 
+ */
 function createUrgentBoarder(i, container) {
     let task = tasksToDos[i];
     if (task['currentStatus'] === 'done-list') {
@@ -87,33 +117,44 @@ function createUrgentBoarder(i, container) {
         }
 }
 
-//creates buttons on detail card depending on their current status
+
+/**
+ * creates buttons on detail card depending on their current status
+ * 
+ * @param {Element} task 
+ * @param {index} id 
+ */
 function fillCardDetailsButtonsContainer(task, id) {
     container = document.getElementById('button-container');
     container.innerHTML = '';
     if(task['currentStatus'] === 'todo-list') {
         container.innerHTML += addCurrentStatusTitleHTML('To Do');
         container.innerHTML += addForwardButtonHTML(id);
-        container.innerHTML += addGoBackButtonHTML(id);
+        container.innerHTML += addCloseCardDEatilsButtonHTML(id);
     } else if (task['currentStatus'] === 'in-progress-list') {
         container.innerHTML += addBackButtonHTML(id);
         container.innerHTML += addCurrentStatusTitleHTML('In Progress');
         container.innerHTML += addForwardButtonHTML(id);
-        container.innerHTML += addGoBackButtonHTML(id);
+        container.innerHTML += addCloseCardDEatilsButtonHTML(id);
     } else if (task['currentStatus'] === 'testing-list') {
         container.innerHTML += addBackButtonHTML(id);
         container.innerHTML += addCurrentStatusTitleHTML('Testing');
         container.innerHTML += addForwardButtonHTML(id);
-        container.innerHTML += addGoBackButtonHTML(id);
+        container.innerHTML += addCloseCardDEatilsButtonHTML(id);
     } else {
         container.innerHTML += addBackButtonHTML(id);
         container.innerHTML += addCurrentStatusTitleHTML('Done');
         container.innerHTML += addDeleteButtonHTML(id);
-        container.innerHTML += addGoBackButtonHTML(id);
+        container.innerHTML += addCloseCardDEatilsButtonHTML(id);
     }
 }
 
-//moves task to next status
+
+/**
+ * moves task to next status
+ * 
+ * @param {index} id 
+ */
 function nextStatus(id) {
     let task = tasksToDos[id];
     let currentStatus = task['currentStatus'];
@@ -126,7 +167,12 @@ function nextStatus(id) {
     openCardDetails(id);
 }
 
-//moves task to previous status
+
+/**
+ * moves task to previous status
+ * 
+ * @param {index} id 
+ */
 function lastStatus(id) {
     let task = tasksToDos[id];
     let currentStatus = task['currentStatus'];
@@ -139,7 +185,12 @@ function lastStatus(id) {
     openCardDetails(id)
 }
 
-//deletes Task
+
+/**
+ * deletes Task
+ * 
+ * @param {index} id 
+ */
 function deleteTask(id) {
     tasksToDos.splice(id, 1);
     saveToLocalStorage();
@@ -147,7 +198,10 @@ function deleteTask(id) {
     closeCardDetails();
 }
 
-//checks request origin
+
+/**
+ * checks request origin by searchin for specific class
+ */
 function checkCurrentHtmlLocationAndUpdateCards() {
     if(document.getElementById('card-details-container').classList.contains('primary')) {
         loadTasksToBoard();
@@ -156,7 +210,10 @@ function checkCurrentHtmlLocationAndUpdateCards() {
     }
 }
 
-//shows navbar when in mobile mode and hide it after 4s
+
+/**
+ * shows navbar when in mobile mode and hide it after 4s
+ */
 function toggleNavbar() {
     document.getElementById('navbar').classList.toggle('show-navbar');
     setTimeout(() => {
@@ -164,14 +221,20 @@ function toggleNavbar() {
     }, 4000)
 }
 
-//save to LocalStorage
+
+
+/**
+ * save to LocalStorage
+ */
 async function saveToLocalStorage() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);
    await backend.setItem('tasksToDos', tasksToDosAsText);
 }
 
 
-//load from LocalStorage
+/**
+ * load from LocalStorage
+ */
 function loadFromLocalStorage() {
     let tasksToDosAsText = backend.getItem('tasksToDos');
     if (tasksToDosAsText) {
@@ -180,6 +243,13 @@ function loadFromLocalStorage() {
 }
 
 //Snippets
+
+/**
+ * returns html code for card details
+ * 
+ * @param {Element} task 
+ * @returns html code for card details
+ */
 function fillCardDetailsHTML(task) {
     return /*html*/ `
     <div class="card-details-content" id="card-details" onclick="stopPropagation(event)">
@@ -204,6 +274,13 @@ function fillCardDetailsHTML(task) {
 `
 }
 
+
+/**
+ * returns html code for collaborators on card details
+ * 
+ * @param {Element} collaborator 
+ * @returns html code for collaborators on card details
+ */
 function fillCardDeatilCollaboratorsHTML(collaborator) {
     return /*html*/ `
     <div class="assignee-container">
@@ -216,30 +293,65 @@ function fillCardDeatilCollaboratorsHTML(collaborator) {
 `
 }
 
+
+/**
+ * returns html code for creating go back button
+ * 
+ * @param {index} id 
+ * @returns html code for creating go back button
+ */
 function addBackButtonHTML(id) {
     return /*html*/ `
     <img src="img/arrow-97-24.png" alt="" title="Last Status" onclick="lastStatus('${id}')">
     `
 }
 
+
+/**
+ * returns html code for creating staus title on card details
+ * 
+ * @param {string} title 
+ * @returns html code for creating staus title on card details
+ */
 function addCurrentStatusTitleHTML(title){
     return /*html*/ `
     <span><b>${title}</b></span>
     `
 }
 
+
+/**
+ * returns html code for creating foward button on card details
+ * 
+ * @param {index} id 
+ * @returns html code for creating foward button on card details
+ */
 function addForwardButtonHTML(id) {
     return /*html*/ `
     <img src="img/arrow-32-24.png" alt="" title="Next Status" onclick="nextStatus('${id}')">
     `
 }
 
-function addGoBackButtonHTML(id) {
+
+/**
+ * returns html code for creating button for close card details
+ * 
+ * @param {index} id 
+ * @returns html code for creating button for close card details
+ */
+function addCloseCardDEatilsButtonHTML(id) {
     return /*html*/ `
     <img src="img/close-window-24.png" alt="" title="Go Back" onclick="closeCardDetails('${id}')">
     `
 }
 
+
+/**
+ * returns html code for creating delete task button
+ * 
+ * @param {index} id 
+ * @returns html code for creating delete task button
+ */
 function addDeleteButtonHTML(id) {
     return /*html*/ `
     <img src="img/trash-2-24.png" alt="" title="Delete Task" onclick="deleteTask('${id}')">
