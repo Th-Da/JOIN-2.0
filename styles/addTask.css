@@ -38,6 +38,7 @@
     border: 1px solid #1E3190;
     border-radius: 5px;
     resize: none;
+    outline: none;
 }
 
 .input-field-headline {
@@ -67,6 +68,10 @@
     animation: flashIn 200ms ease-in-out;
     animation-fill-mode:backwards;
     animation-iteration-count: 4;
+}
+
+input {
+    outline: none;
 }
 
 @keyframes flashIn {
