@@ -3,6 +3,10 @@
  */
 let choosedUser = [];
 
+
+/**
+ * Starts when you open addtask
+ */
 async function initNewTask() {
     await includeHTML();
     await downloadFromServer();
@@ -11,9 +15,14 @@ async function initNewTask() {
     showUsersOnAddTask();
 }
 
+
+/**
+ * Show the current date
+ */
 function setCurrentDateToInputField() {
     document.getElementById('input-field-date').value = new Date().toISOString().substring(0, 10);
 }
+
 
 /**
  * This function creates a new task
@@ -34,8 +43,8 @@ async function createNewTask() { // creat task button
     window.close();
     window.open("index.html");  
     }
-   
 }
+
 
 /**
  * shows loading animation
@@ -52,7 +61,6 @@ function clearInputFields() {
     choosedUser = [];
     showUsersOnAddTask();
     setCurrentDateToInputField();
-
 }
 
 
@@ -109,6 +117,7 @@ function showUsers() {
     }
 }
 
+
 /**
  * checks if user is already selectet
  * 
@@ -133,6 +142,7 @@ function checkIfUserAlreadySelected(employee) {
  */
 function removeUser(u) {
     let UserToSearch = employees[u]['name'];
+
     for (let i = 0; i < choosedUser.length; i++) {
         const user = choosedUser[i];
         if (UserToSearch === user['name']) {
@@ -144,19 +154,18 @@ function removeUser(u) {
     showUsersOnAddTask();
 }
 
+
 /**
  * In this function, you can pick a single employee and push it into an array
  * 
  * @param {variable} u - This is a variable and replaces a place in the array
  */
 function chooseTheUser(u) {
-
     choosedUser.push({
         'name': employees[u]['name'],
         'email': employees[u]['email'],
         'img': employees[u]['img']
     })
-
     closeCardDetails();
     showUsersOnAddTask();
 }
@@ -215,6 +224,13 @@ function showUsersHTML(u) {
     `
 }
 
+
+/**
+ * This function return the HTML
+ * 
+ * @param {variable} u - This is a variable and replaces a place in the array
+ * @returns - return the HTML for the showSelectedUser function 
+ */
 function showSelectedUsersHTML(u) {
     return /*html*/`
         <div id="user-container${u}" onclick="removeUser(${u})" class="user-container-main user-inactive">

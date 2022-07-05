@@ -20,10 +20,8 @@
 </head>
 
 <body onload="initBoard()">
-
     <div class="main-container" id="mainContainer">
         <div w3-include-html="./templates/navbar.html"></div>
-
         <div class="tasks-main-container">
             <div class="tasks-left-container">
                 <div class="tasks-container">
@@ -35,7 +33,6 @@
 
                     </div>
                 </div>
-
                 <div class="tasks-container">
                     <div class="tasks-headline-container">
                         IN PROGRESS
@@ -55,28 +52,19 @@
                         ondragover="allowDrop(event); getId(this)">
                     </div>
                 </div>
-
                 <div class="tasks-container">
                     <div class="tasks-headline-container">
                         DONE
                     </div>
                     <div class="tasks-list-container" id="done-list" ondrop="moveTo('done')"
                         ondragover="allowDrop(event); getId(this)">
-
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
         <div id="card-details-container" class="d-none fade-out primary" onclick="closeCardDetails()">
         </div>
     </div>
-
-
     <script src="./scripts/includeHTML.js"></script>
 </body>
 
