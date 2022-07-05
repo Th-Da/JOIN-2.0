@@ -8,7 +8,7 @@ let currentMouseoverId;    // ---------^^-----------
 async function initBoard() {
     await includeHTML();
     await downloadFromServer();
-    loadFromLocalStorage();
+    loadFromBackend();
     loadTasksToBoard();
 }
 
@@ -43,8 +43,8 @@ function filterUrgentBorder() {
 /**
  * insert collaborators to board cards
  * 
- * @param {array} collaborators 
- * @param {number} i 
+ * @param {array} collaborators - array with all collaborators from this task
+ * @param {number} i - index of task
  */
 function insertTodoCollaboratorsToCard(collaborators, i) {
     for (let y = 0; y < collaborators.length; y++) {
@@ -71,7 +71,7 @@ function emptyBoardLists() {
 /**
  * starts dragging
  * 
- * @param {number} i 
+ * @param {number} i - index of task
  */
 function startDragging(i) {
     currentDraggedElement = i;
@@ -81,7 +81,7 @@ function startDragging(i) {
 /**
  * catches id from element under mouse hover 
  * 
- * @param {number} obj 
+ * @param {number} obj - index id from element
  */
 function getId(obj) {
     currentMouseoverId = obj.id;
@@ -91,7 +91,7 @@ function getId(obj) {
 /**
  * allows to drop elements
  * 
- * @param {number} ev 
+ * @param {Event} ev - event
  */
 function allowDrop(ev) {
     ev.preventDefault();
@@ -103,8 +103,8 @@ function allowDrop(ev) {
  */
 function moveTo() {
     tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
-    saveToLocalStorage();
-    loadFromLocalStorage();
+    saveToBackend();
+    loadFromBackend();
     setTimeout(loadTasksToBoard, 0);
 }
 
@@ -113,9 +113,9 @@ function moveTo() {
 /**
  * returns html code for creating task cards on board
  * 
- * @param {element} task 
- * @param {number} i 
- * @returns html code for creating task cards on board
+ * @param {element} task - single task element
+ * @param {number} i - index of task
+ * @returns - html code for creating task cards on board
  */
 function createToDoTaskCardHTML(task, i) {
     return /*html*/ `

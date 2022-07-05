@@ -49,7 +49,7 @@ setURL('http://gruppe-260.developerakademie.net/smallest_backend_ever-master');
 async function init() {
     await includeHTML();
     await downloadFromServer();
-    loadFromLocalStorage();
+    loadFromBackend();
 }
 
 
@@ -66,7 +66,7 @@ function stopPropagation(event) {
 /**
  * creates card details before fade in
  * 
- * @param {number} id 
+ * @param {number} id - index of task
  */
 function openCardDetails(id) {
     let task = tasksToDos[id]
@@ -82,7 +82,7 @@ function openCardDetails(id) {
 /**
  * creates collaborator details on detail card before fade in
  * 
- * @param {number} id 
+ * @param {number} id - index of task
  */
 function fillCardDeatilCollaborators(id) {
     let collaborators = tasksToDos[id]['collaborators'];
@@ -119,8 +119,8 @@ function closeCardDetails() {
 /**
  * adds colored border to cards depending on their urgent status
  * 
- * @param {number} i 
- * @param {HTMLBodyElement} container 
+ * @param {number} i - index of task
+ * @param {HTMLBodyElement} container - gives the complete path to container element by document.indexOf('')
  */
 function createUrgentBoarder(i, container) {
     let task = tasksToDos[i];
@@ -139,8 +139,8 @@ function createUrgentBoarder(i, container) {
 /**
  * creates buttons on detail card depending on their current status
  * 
- * @param {Element} task 
- * @param {number} id 
+ * @param {Element} task - a single task element
+ * @param {number} id - index of task
  */
 function fillCardDetailsButtonsContainer(task, id) {
     container = document.getElementById('button-container');
@@ -171,7 +171,7 @@ function fillCardDetailsButtonsContainer(task, id) {
 /**
  * moves task to next status
  * 
- * @param {number} id 
+ * @param {number} id - index of task
  */
 function nextStatus(id) {
     let task = tasksToDos[id];
@@ -180,7 +180,7 @@ function nextStatus(id) {
     let newStatusIndex = currentStatusIndex + 1;
     task['currentStatus'] = boardListIds[newStatusIndex];
     fillCardDetailsButtonsContainer(task, id);
-    saveToLocalStorage();
+    saveToBackend();
     checkCurrentHtmlLocationAndUpdateCards();
     openCardDetails(id);
 }
@@ -189,7 +189,7 @@ function nextStatus(id) {
 /**
  * moves task to previous status
  * 
- * @param {number} id 
+ * @param {number} id - index of task
  */
 function lastStatus(id) {
     let task = tasksToDos[id];
@@ -198,7 +198,7 @@ function lastStatus(id) {
     let newStatusIndex = currentStatusIndex - 1;
     task['currentStatus'] = boardListIds[newStatusIndex];
     fillCardDetailsButtonsContainer(task, id);
-    saveToLocalStorage();
+    saveToBackend();
     checkCurrentHtmlLocationAndUpdateCards();
     openCardDetails(id)
 }
@@ -207,11 +207,11 @@ function lastStatus(id) {
 /**
  * deletes Task
  * 
- * @param {number} id 
+ * @param {number} id - index of task
  */
 function deleteTask(id) {
     tasksToDos.splice(id, 1);
-    saveToLocalStorage();
+    saveToBackend();
     checkCurrentHtmlLocationAndUpdateCards();
     closeCardDetails();
 }
@@ -244,7 +244,7 @@ function toggleNavbar() {
 /**
  * save to LocalStorage
  */
-async function saveToLocalStorage() {
+async function saveToBackend() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);
    await backend.setItem('tasksToDos', tasksToDosAsText);
 }
@@ -253,7 +253,7 @@ async function saveToLocalStorage() {
 /**
  * load from LocalStorage
  */
-function loadFromLocalStorage() {
+function loadFromBackend() {
     let tasksToDosAsText = backend.getItem('tasksToDos');
     if (tasksToDosAsText) {
         tasksToDos = JSON.parse(tasksToDosAsText);
@@ -265,8 +265,8 @@ function loadFromLocalStorage() {
 /**
  * returns html code for card details
  * 
- * @param {Element} task 
- * @returns html code for card details
+ * @param {Element} task - a single task element
+ * @returns - html code for card details
  */
 function fillCardDetailsHTML(task) {
     return /*html*/ `
@@ -296,8 +296,8 @@ function fillCardDetailsHTML(task) {
 /**
  * returns html code for collaborators on card details
  * 
- * @param {Element} collaborator 
- * @returns html code for collaborators on card details
+ * @param {Element} collaborator - a single collaborator element
+ * @returns - html code for collaborators on card details
  */
 function fillCardDeatilCollaboratorsHTML(collaborator) {
     return /*html*/ `
@@ -315,8 +315,8 @@ function fillCardDeatilCollaboratorsHTML(collaborator) {
 /**
  * returns html code for creating go back button
  * 
- * @param {number} id 
- * @returns html code for creating go back button
+ * @param {number} id  - index of task
+ * @returns - html code for creating go back button
  */
 function addBackButtonHTML(id) {
     return /*html*/ `
@@ -328,8 +328,8 @@ function addBackButtonHTML(id) {
 /**
  * returns html code for creating staus title on card details
  * 
- * @param {string} title 
- * @returns html code for creating staus title on card details
+ * @param {string} title - th etitle string from task element
+ * @returns - html code for creating staus title on card details
  */
 function addCurrentStatusTitleHTML(title){
     return /*html*/ `
@@ -341,8 +341,8 @@ function addCurrentStatusTitleHTML(title){
 /**
  * returns html code for creating foward button on card details
  * 
- * @param {number} id 
- * @returns html code for creating foward button on card details
+ * @param {number} id - index of task
+ * @returns - html code for creating foward button on card details
  */
 function addForwardButtonHTML(id) {
     return /*html*/ `
@@ -354,8 +354,8 @@ function addForwardButtonHTML(id) {
 /**
  * returns html code for creating button for close card details
  * 
- * @param {number} id 
- * @returns html code for creating button for close card details
+ * @param {number} id - index of task
+ * @returns - html code for creating button for close card details
  */
 function addCloseCardDEatilsButtonHTML(id) {
     return /*html*/ `
@@ -367,8 +367,8 @@ function addCloseCardDEatilsButtonHTML(id) {
 /**
  * returns html code for creating delete task button
  * 
- * @param {number} id 
- * @returns html code for creating delete task button
+ * @param {number} id - index of task
+ * @returns - html code for creating delete task button
  */
 function addDeleteButtonHTML(id) {
     return /*html*/ `

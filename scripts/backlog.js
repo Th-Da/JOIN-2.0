@@ -4,7 +4,7 @@
 async function initBacklog() {
     await includeHTML();
     await downloadFromServer();
-    loadFromLocalStorage();
+    loadFromBackend();
     loadTasksToBacklog();
 }
 
@@ -24,7 +24,7 @@ function loadTasksToBacklog() {
 /**
  * load tasks by urgency
  * 
- * @param {string} urgency 
+ * @param {string} urgency - string with urgency status
  */
 function filterTasksByUrgency(urgency) {
     for (let i = 0; i < tasksToDos.length; i++) {
@@ -54,9 +54,9 @@ function filterTaskByStatudDone() {
 /**
  * creates backlog card
  * 
- * @param {number} i 
- * @param {Element} task 
- * @param {Array} collaborators 
+ * @param {number} i - index of task
+ * @param {Element} task - single task element
+ * @param {Array} collaborators - array with all collaborators for this task
  */
 function loadBacklockCard(i, task, collaborators) {
     document.getElementById('backlog-cards').innerHTML += createBacklogCardHTML(i, task);
@@ -68,8 +68,8 @@ function loadBacklockCard(i, task, collaborators) {
 /**
  * insert collaborators to backlog card
  * 
- * @param {array} collaborators 
- * @param {number} i 
+ * @param {array} collaborators - array with all collaborators for this task
+ * @param {number} i - indes from task
  */
 function insertBacklogCardCollaborators(collaborators, i) {
     let container = document.getElementById('backlog-card-img-container'+i)
@@ -94,9 +94,9 @@ function emptyBacklog() {
 /**
  * returns html code for creating backlog card
  * 
- * @param {number} i 
- * @param {Element} task 
- * @returns html code for creating backlog card
+ * @param {number} i - index of task
+ * @param {Element} task - single task element
+ * @returns - html code for creating backlog card
  */
 function createBacklogCardHTML(i, task) {
     return /*html*/ `

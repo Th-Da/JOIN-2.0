@@ -1,23 +1,23 @@
 /**
- * The global Array
+ * array for choosed users on create new task card
  */
-let choosedUser = [];
+let choosedUsers = [];
 
 
 /**
- * Starts when you open addtask
+ * initial load function
  */
 async function initNewTask() {
     await includeHTML();
     await downloadFromServer();
-    loadFromLocalStorage();
+    loadFromBackend();
     setCurrentDateToInputField();
     showUsersOnAddTask();
 }
 
 
 /**
- * Show the current date
+ * shows the current date
  */
 function setCurrentDateToInputField() {
     document.getElementById('input-field-date').value = new Date().toISOString().substring(0, 10);
@@ -25,7 +25,7 @@ function setCurrentDateToInputField() {
 
 
 /**
- * This function creates a new task
+ * creates a new task
  */
 async function createNewTask() { // creat task button
     let titles = document.getElementById('input-field-title').value;
@@ -34,14 +34,15 @@ async function createNewTask() { // creat task button
     let descriptions = document.getElementById('input-field-description').value;
     let urgencys = document.getElementById('input-field-urgency').value;
     let date = new Date().toDateString();
-    pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
-    if (choosedUser.length === 0) {
+    if (choosedUsers.length === 0) {
         document.getElementById('add-user-button').classList.toggle('add-user-button')
+        console.log(choosedUsers);
     } else {
-       showLoadingAnimation();
-    await saveToLocalStorage();
-    window.close();
-    window.open("index.html");  
+        pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
+        showLoadingAnimation();
+        await saveToBackend();
+        window.close();
+        window.open("index.html");
     }
 }
 
@@ -55,10 +56,10 @@ function showLoadingAnimation() {
 
 
 /**
- * This function deletes the employees
+ * deletes the employees
  */
 function clearInputFields() {
-    choosedUser = [];
+    choosedUsers = [];
     showUsersOnAddTask();
     setCurrentDateToInputField();
 }
@@ -66,7 +67,7 @@ function clearInputFields() {
 
 //push in taskToDos Array
 /**
- * This function pushed the content from the input field into an array
+ * pushes the content from the input field into an array
  * 
  * @param {string} titles - content from the input field from the function createNewTask
  * @param {string} dueDates - content from the input field from the function createNewTask 
@@ -84,13 +85,13 @@ function pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, da
         'category': categorys,
         'urgency': urgencys,
         'createdDate': date,
-        'collaborators': choosedUser,
+        'collaborators': choosedUsers,
     });
 }
 
 
 /**
- * This function open the large user card in the category AddTask
+ * opens the large user card in the category AddTask
  */
 function openUsersCard() {
     fadeIn();
@@ -102,7 +103,7 @@ function openUsersCard() {
 
 
 /**
- * This function shows the emlpoyees on details card
+ * shows the emlpoyees on details card
  */
 function showUsers() {
     let showUsers = document.getElementById('card-details-users');
@@ -121,12 +122,12 @@ function showUsers() {
 /**
  * checks if user is already selectet
  * 
- * @param {Element} employee 
- * @returns true or false
+ * @param {Element} employee - a single employee element
+ * @returns - true or false
  */
 function checkIfUserAlreadySelected(employee) {
-    for (let i = 0; i < choosedUser.length; i++) {
-        const user = choosedUser[i];
+    for (let i = 0; i < choosedUsers.length; i++) {
+        const user = choosedUsers[i];
         if (employee['name'] === user['name']) {
             return true
         }
@@ -136,17 +137,17 @@ function checkIfUserAlreadySelected(employee) {
 
 
 /**
- * removes selected user from choosedUser
+ * removes selected user from choosedUsers
  * 
- * @param {number} u 
+ * @param {number} u - index of task
  */
 function removeUser(u) {
     let UserToSearch = employees[u]['name'];
 
-    for (let i = 0; i < choosedUser.length; i++) {
-        const user = choosedUser[i];
+    for (let i = 0; i < choosedUsers.length; i++) {
+        const user = choosedUsers[i];
         if (UserToSearch === user['name']) {
-            choosedUser.splice(i, 1);
+            choosedUsers.splice(i, 1);
             break
         }
     }
@@ -158,10 +159,10 @@ function removeUser(u) {
 /**
  * In this function, you can pick a single employee and push it into an array
  * 
- * @param {number} u - This is a variable and replaces a place in the array
+ * @param {number} u - index of task
  */
 function chooseTheUser(u) {
-    choosedUser.push({
+    choosedUsers.push({
         'name': employees[u]['name'],
         'email': employees[u]['email'],
         'img': employees[u]['img']
@@ -172,15 +173,15 @@ function chooseTheUser(u) {
 
 
 /**
- * This function show the selected employees
+ * shows the selected employees
  */
 function showUsersOnAddTask() {
     let showUsers = document.getElementById('user-icon');
 
     showUsers.innerHTML = '';
 
-    for (let i = 0; i < choosedUser.length; i++) {
-        const userImg = choosedUser[i]['img'];
+    for (let i = 0; i < choosedUsers.length; i++) {
+        const userImg = choosedUsers[i]['img'];
 
         showUsers.innerHTML += `<img src="${userImg}">`;
     }
@@ -190,9 +191,9 @@ function showUsersOnAddTask() {
 // HTML snippets
 
 /**
- * This function return the HMTL
+ * returns html code for creating choose user card
  * 
- * @returns - return the HTML for the openUsersCard function 
+ * @returns - html code for creating choose user card
  */
 function openUsersCardHTML() {
     return /*html*/`
@@ -207,10 +208,10 @@ function openUsersCardHTML() {
 
 
 /**
- * This function return the HTML
+ * returns html code for creating each user on choose user card
  * 
- * @param {number} u - This is a variable and replaces a place in the array
- * @returns - return the HTML for the showUsers function 
+ * @param {number} u - index of task
+ * @returns - html code for creating each user on choose user card
  */
 function showUsersHTML(u) {
     return /*html*/`
@@ -226,10 +227,10 @@ function showUsersHTML(u) {
 
 
 /**
- * This function return the HTML
+ * returns html code for creating each selected user on choose user card
  * 
- * @param {number} u - This is a variable and replaces a place in the array
- * @returns - return the HTML for the showSelectedUser function 
+ * @param {number} u - index of task
+ * @returns - returns html code for creating each selected user on choose user card 
  */
 function showSelectedUsersHTML(u) {
     return /*html*/`

@@ -33,8 +33,8 @@ function login() {
 /**
  * checks if login data is valid
  * 
- * @param {boolean} userNameInUserdata 
- * @param {boolean} passwordInUserData 
+ * @param {boolean} userNameInUserdata - a true/false boolean if have found element
+ * @param {boolean} passwordInUserData - a true/false boolean if have found element
  */
 function checkIfLoginDataValid(userNameInUserdata, passwordInUserData) {
     if (userNameInUserdata && passwordInUserData === true) {
