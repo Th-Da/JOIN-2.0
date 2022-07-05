@@ -29,12 +29,12 @@
                 <h1>Add Task</h1>
                 <span class="join-phrase">Learning Management System Project</span>
             </div>
-            <form class="add-task-main-container" onsubmit="createNewTask()">
+            <form class="add-task-main-container" onsubmit="event.preventDefault(), createNewTask()">
                 <div class="add-task-container-bg">
                     <div class="add-task-container-left">
                         <div class="input-field-headline width-responsive">TITLE</div>
                         <div class="width-responsive"><input id="input-field-title" class="input-fields"
-                                placeholder="Type your title..." type="text"></div>
+                                placeholder="Type your title..." type="text" required></div>
                         <div class="input-field-headline width-responsive">CATEGORY</div>
                         <div class="width-responsive">
                             <select class="input-fields" id="input-field-category">
@@ -46,13 +46,14 @@
                         </div>
                         <div class="input-field-headline width-responsive">DESCRIPTION</div>
                         <div class="width-responsive">
-                            <textarea id="input-field-description" class="input-field-discription"
+                            <textarea id="input-field-description" required class="input-field-discription"
                                 placeholder="Type your discription..."></textarea>
                         </div>
                     </div>
                     <div class="add-task-container-right">
                         <div class="input-field-headline width-responsive">DUE DATE</div>
-                        <div class="width-responsive"><input id="input-field-date" class="input-fields" type="date">
+                        <div class="width-responsive"><input id="input-field-date" class="input-fields" required
+                                type="date">
                         </div>
                         <div class="input-field-headline width-responsive">URGENCY</div>
                         <div class="width-responsive">
@@ -64,13 +65,13 @@
                         </div>
                         <div id="user-icon"></div>
                         <div class="buttons width-responsive">
-                            <div onclick="openUsersCard()" class="button-add">Add Employees</div>
-                            <div onclick="clearInputFields()" class="button-cancel">CANCEL</div>
-                            <button  class="button-create-task">CREATE TASK</button>
+                            <button onclick="openUsersCard()" class="button-add" type="button">Add Employees</button>
+                            <button onclick="clearInputFields()" class="button-cancel" type="reset">CANCEL</button>
+                            <button class="button-create-task" type="submit">CREATE TASK</button>
                         </div>
                     </div>
                 </div>
-            </fom>
+            </form>
         </div>
         <div id="card-details-container" class="secondary fade-out d-none" onclick="closeCardDetails()"></div>
     </div>

@@ -25,32 +25,22 @@ function createNewTask() { // creat task button
     let urgencys = document.getElementById('input-field-urgency').value;
     let date = new Date().toDateString();
     console.log(descriptions);
-    if (descriptions === '' || titles === '' || choosedUser.length === 0) {
-        alert('Please fill out all fields and choose Employees');
-    } else {
-        pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
-        clearInputFields();
+    pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
         saveToLocalStorage();
         //bitte noch irgnorieren, wird noch angepasst
         setTimeout(() => {
             window.close();
         window.open("index.html");
         }, 500)
-        
-    }
 }
 
 
 
 /**
- * This function clear the input field and delete the employees
+ * This function deletes the employees
  */
 function clearInputFields() {
     choosedUser = [];
-    document.getElementById('input-field-title').value = '';
-    document.getElementById('input-field-date').value = '';
-    document.getElementById('input-field-description').value = '';
-
     showUsersOnAddTask();
     setCurrentDateToInputField();
 
@@ -102,24 +92,24 @@ function showUsers() {
 
     for (let u = 0; u < employees.length; u++) {
         const employee = employees[u];
-        let userAlreadySelected = false;
-        if (choosedUser.length !== 0) {
-            for (let i = 0; i < choosedUser.length; i++) {
-                const user = choosedUser[i];
-                if (employee['name'] === user['name']) {
-                    userAlreadySelected = true;
-                }
-            }
-        }
+        let userAlreadySelected = checkIfUserAlreadySelected(employee);
         if (userAlreadySelected === false) {
             showUsers.innerHTML += showUsersHTML(u);
         } else {
             showUsers.innerHTML += showSelectedUsersHTML(u);
         }
     }
-
 }
 
+function checkIfUserAlreadySelected(employee) {
+    for (let i = 0; i < choosedUser.length; i++) {
+        const user = choosedUser[i];
+        if (employee['name'] === user['name']) {
+            return true
+        }
+    }
+    return false
+}
 
 /**
  * In this function, you can pick a single employee and push it into an array
@@ -127,9 +117,6 @@ function showUsers() {
  * @param {variable} u - This is a variable and replaces a place in the array
  */
 function chooseTheUser(u) {
-    let nameOfUser = document.getElementById('user-name' + u).innerHTML;
-    let emailOfUSer = document.getElementById('user-email' + u).innerHTML;
-    let imgOfUser = document.getElementById('user-img' + u).src;
 
     choosedUser.push({
         'name': employees[u]['name'],
