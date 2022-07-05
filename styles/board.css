@@ -42,6 +42,7 @@
 
 .tasks-list-container {
     background-color: #F4F3FB;
+    border-radius: 10px;
     height: 100%;
     margin-bottom: 24px;
 }

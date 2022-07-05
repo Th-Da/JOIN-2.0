@@ -360,8 +360,30 @@ border-left: 5px solid #FFABAB !important;
     .tasks-list-container {
         margin-bottom: unset !important;
     }
+}
 
+@media (max-width:350px) {
+    .assignee-container {
+        flex-direction: column;
+        margin-bottom: 16px;
+    }
 
+    .assignee-container img {
+        margin-bottom: 8px;
+    }
+
+    .deadline-container span {
+        margin-right: 12px;
+    }
+
+    #card-details-container {
+        position: absolute;
+        bottom: unset;
+    }
+
+    .card-details-content {
+        margin-top: 50px;
+    }
 }
 
 /* fonts */

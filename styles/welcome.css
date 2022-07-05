@@ -5,6 +5,10 @@ body {
     align-items: center;
 }
 
+input {
+    outline: none;
+}
+
 .opacity-zero {
     opacity: 0;
 }
