@@ -13,18 +13,21 @@
 }
 
 .add-task-container-left {
-    padding: 20px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 50px;
     width: 50%;
-    margin-left: 80px;
 }
 
 .add-task-container-right {
-    padding: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 100px;
     width: 50%;
 }
 
 .input-fields {
-    width: 80%;
+    width: 100%;
     height: 40px;
     margin-top: 10px;
     border: 1px solid #1E3190;
@@ -32,7 +35,7 @@
 }
 
 .input-field-discription {
-    width: 80%;
+    width: 100%;
     height: 180px;
     margin-top: 10px;
     border: 1px solid #1E3190;
@@ -125,10 +128,9 @@ input {
 }
 
 .buttons {
-    width: 80%;
     height: 28%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: end;
 }
 
@@ -137,7 +139,6 @@ input {
 }
 
 #user-icon {
-    width: 80%;
     height: 60px;
     display: flex;
     justify-content: center;
@@ -230,6 +231,11 @@ input {
     .buttons {
         font-size: 13px;
     }
+
+    #user-icon img {
+        height: 60px;
+        width: 60px;
+    }
 }
 
 @media (max-width:1070px) {
@@ -260,8 +266,9 @@ input {
     }
 
     .add-task-container-left {
+        padding-left: 20px;
+        padding-right: 20px;
         margin: 0;
-        padding: 0;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -269,7 +276,8 @@ input {
     }
 
     .add-task-container-right {
-        padding: 0;
+        padding-left: 20px;
+        padding-right: 20px;
         width: 100%;
     }
 
@@ -332,5 +340,30 @@ input {
 
     .buttons {
         font-size: 11px;
+    }
+
+    .user-container {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:300px) {
+    .user-container {
+        font-size: 11px;
+    }
+
+    .buttons {
+        font-size: 8px;
+    }
+}
+
+@media (max-width:280px) {
+    #user-icon img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .buttons {
+        font-size: 8px;
     }
 }
