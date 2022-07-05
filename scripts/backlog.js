@@ -1,3 +1,6 @@
+/**
+ * initial load function
+ */
 async function initBacklog() {
     await includeHTML();
     await downloadFromServer();
@@ -5,7 +8,10 @@ async function initBacklog() {
     loadTasksToBacklog();
 }
 
-//load tasks to backlog
+
+/**
+ * load tasks to backlog
+ */
 function loadTasksToBacklog() {
     emptyBacklog();
     filterTasksByUrgency('High');
@@ -14,7 +20,12 @@ function loadTasksToBacklog() {
     filterTaskByStatudDone();
 }
 
-//load tasks by urgency
+
+/**
+ * load tasks by urgency
+ * 
+ * @param {string} urgency 
+ */
 function filterTasksByUrgency(urgency) {
     for (let i = 0; i < tasksToDos.length; i++) {
         const task = tasksToDos[i];
@@ -25,7 +36,10 @@ function filterTasksByUrgency(urgency) {
     }
 }
 
-//load task that are done 
+
+/**
+ * load task that are done 
+ */
 function filterTaskByStatudDone() {
     for (let i = 0; i < tasksToDos.length; i++) {
         const task = tasksToDos[i];
@@ -36,14 +50,27 @@ function filterTaskByStatudDone() {
     }
 }
 
-//creates backlog card
+
+/**
+ * creates backlog card
+ * 
+ * @param {number} i 
+ * @param {Element} task 
+ * @param {Array} collaborators 
+ */
 function loadBacklockCard(i, task, collaborators) {
     document.getElementById('backlog-cards').innerHTML += createBacklogCardHTML(i, task);
         insertBacklogCardCollaborators(collaborators, i);
         createUrgentBoarder(i, document.getElementById(i))
 }
 
-//insert collaborators to backlog card
+
+/**
+ * insert collaborators to backlog card
+ * 
+ * @param {array} collaborators 
+ * @param {number} i 
+ */
 function insertBacklogCardCollaborators(collaborators, i) {
     let container = document.getElementById('backlog-card-img-container'+i)
     for (let i = 0; i < collaborators.length; i++) {
@@ -54,12 +81,23 @@ function insertBacklogCardCollaborators(collaborators, i) {
     }
 }
 
-//emptys backlog before loading new cards
+
+/**
+ * emptys backlog before loading new cards
+ */
 function emptyBacklog() {
     document.getElementById('backlog-cards').innerHTML = '';
 }
 
 //HTML snippets
+
+/**
+ * returns html code for creating backlog card
+ * 
+ * @param {number} i 
+ * @param {Element} task 
+ * @returns html code for creating backlog card
+ */
 function createBacklogCardHTML(i, task) {
     return /*html*/ `
     <div class="backlog-card" id="${i}"  onclick="openCardDetails(${i})">

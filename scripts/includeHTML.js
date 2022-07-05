@@ -1,3 +1,6 @@
+/**
+ * loads navbar from templates forlder to the website
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -13,6 +16,10 @@ async function includeHTML() {
     updateActivePage();
 }
 
+
+/**
+ * shows active bar next to the right link on navbar
+ */
 function updateActivePage() {
     let active = window.location.pathname.split('/').pop();
     let linksActiveBar = document.getElementsByClassName('slected-nav-item');

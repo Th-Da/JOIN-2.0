@@ -3,7 +3,7 @@ let currentMouseoverId;    // ---------^^-----------
 
 
 /**
- * board functions are loaded
+ * initial load function
  */
 async function initBoard() {
     await includeHTML();
@@ -43,8 +43,8 @@ function filterUrgentBorder() {
 /**
  * insert collaborators to board cards
  * 
- * @param {string} collaborators - 
- * @param {*} i 
+ * @param {array} collaborators 
+ * @param {number} i 
  */
 function insertTodoCollaboratorsToCard(collaborators, i) {
     for (let y = 0; y < collaborators.length; y++) {
@@ -68,18 +68,39 @@ function emptyBoardLists() {
 
 // drag and drop functions
 
+/**
+ * starts dragging
+ * 
+ * @param {number} i 
+ */
 function startDragging(i) {
     currentDraggedElement = i;
 }
 
+
+/**
+ * catches id from element under mouse hover 
+ * 
+ * @param {number} obj 
+ */
 function getId(obj) {
     currentMouseoverId = obj.id;
 }
 
+
+/**
+ * allows to drop elements
+ * 
+ * @param {number} ev 
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+
+/**
+ * changes the status from dragged element to the status from the list where it has droped
+ */
 function moveTo() {
     tasksToDos[currentDraggedElement]['currentStatus'] = currentMouseoverId;
     saveToLocalStorage();
@@ -89,6 +110,13 @@ function moveTo() {
 
 // HTML snippets
 
+/**
+ * returns html code for creating task cards on board
+ * 
+ * @param {element} task 
+ * @param {number} i 
+ * @returns html code for creating task cards on board
+ */
 function createToDoTaskCardHTML(task, i) {
     return /*html*/ `
     <div class="task-card" onclick="openCardDetails(${i})" ondragstart="startDragging(${i})" draggable="true" id="${i}">

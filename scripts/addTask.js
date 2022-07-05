@@ -138,7 +138,7 @@ function checkIfUserAlreadySelected(employee) {
 /**
  * removes selected user from choosedUser
  * 
- * @param {index} u 
+ * @param {number} u 
  */
 function removeUser(u) {
     let UserToSearch = employees[u]['name'];
@@ -158,7 +158,7 @@ function removeUser(u) {
 /**
  * In this function, you can pick a single employee and push it into an array
  * 
- * @param {variable} u - This is a variable and replaces a place in the array
+ * @param {number} u - This is a variable and replaces a place in the array
  */
 function chooseTheUser(u) {
     choosedUser.push({
@@ -209,7 +209,7 @@ function openUsersCardHTML() {
 /**
  * This function return the HTML
  * 
- * @param {variable} u - This is a variable and replaces a place in the array
+ * @param {number} u - This is a variable and replaces a place in the array
  * @returns - return the HTML for the showUsers function 
  */
 function showUsersHTML(u) {
@@ -228,7 +228,7 @@ function showUsersHTML(u) {
 /**
  * This function return the HTML
  * 
- * @param {variable} u - This is a variable and replaces a place in the array
+ * @param {number} u - This is a variable and replaces a place in the array
  * @returns - return the HTML for the showSelectedUser function 
  */
 function showSelectedUsersHTML(u) {

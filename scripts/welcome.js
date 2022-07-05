@@ -1,3 +1,6 @@
+/**
+ * array with valid user data
+ */
 let userData = [
     {
         'username': 'admin',

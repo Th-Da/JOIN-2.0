@@ -1,5 +1,18 @@
+/**
+ * array with all created tasks
+ */
 let tasksToDos = [];
+
+
+/**
+ * array with ids from borad for changing status with buttons on detail cards
+ */
 let boardListIds = ['todo-list', 'in-progress-list', 'testing-list', 'done-list'];
+
+
+/**
+ * array with all current employees
+ */
 let employees = [
     {
         'name': 'Leta Marshall',
@@ -23,7 +36,12 @@ let employees = [
     }
 ];
 
+
+/**
+ * url for backend
+ */
 setURL('http://gruppe-260.developerakademie.net/smallest_backend_ever-master');
+
 
 /**
  * initial load function
@@ -48,7 +66,7 @@ function stopPropagation(event) {
 /**
  * creates card details before fade in
  * 
- * @param {index} id 
+ * @param {number} id 
  */
 function openCardDetails(id) {
     let task = tasksToDos[id]
@@ -64,7 +82,7 @@ function openCardDetails(id) {
 /**
  * creates collaborator details on detail card before fade in
  * 
- * @param {index} id 
+ * @param {number} id 
  */
 function fillCardDeatilCollaborators(id) {
     let collaborators = tasksToDos[id]['collaborators'];
@@ -101,7 +119,7 @@ function closeCardDetails() {
 /**
  * adds colored border to cards depending on their urgent status
  * 
- * @param {index} i 
+ * @param {number} i 
  * @param {HTMLBodyElement} container 
  */
 function createUrgentBoarder(i, container) {
@@ -122,7 +140,7 @@ function createUrgentBoarder(i, container) {
  * creates buttons on detail card depending on their current status
  * 
  * @param {Element} task 
- * @param {index} id 
+ * @param {number} id 
  */
 function fillCardDetailsButtonsContainer(task, id) {
     container = document.getElementById('button-container');
@@ -153,7 +171,7 @@ function fillCardDetailsButtonsContainer(task, id) {
 /**
  * moves task to next status
  * 
- * @param {index} id 
+ * @param {number} id 
  */
 function nextStatus(id) {
     let task = tasksToDos[id];
@@ -171,7 +189,7 @@ function nextStatus(id) {
 /**
  * moves task to previous status
  * 
- * @param {index} id 
+ * @param {number} id 
  */
 function lastStatus(id) {
     let task = tasksToDos[id];
@@ -189,7 +207,7 @@ function lastStatus(id) {
 /**
  * deletes Task
  * 
- * @param {index} id 
+ * @param {number} id 
  */
 function deleteTask(id) {
     tasksToDos.splice(id, 1);
@@ -297,7 +315,7 @@ function fillCardDeatilCollaboratorsHTML(collaborator) {
 /**
  * returns html code for creating go back button
  * 
- * @param {index} id 
+ * @param {number} id 
  * @returns html code for creating go back button
  */
 function addBackButtonHTML(id) {
@@ -323,7 +341,7 @@ function addCurrentStatusTitleHTML(title){
 /**
  * returns html code for creating foward button on card details
  * 
- * @param {index} id 
+ * @param {number} id 
  * @returns html code for creating foward button on card details
  */
 function addForwardButtonHTML(id) {
@@ -336,7 +354,7 @@ function addForwardButtonHTML(id) {
 /**
  * returns html code for creating button for close card details
  * 
- * @param {index} id 
+ * @param {number} id 
  * @returns html code for creating button for close card details
  */
 function addCloseCardDEatilsButtonHTML(id) {
@@ -349,7 +367,7 @@ function addCloseCardDEatilsButtonHTML(id) {
 /**
  * returns html code for creating delete task button
  * 
- * @param {index} id 
+ * @param {number} id 
  * @returns html code for creating delete task button
  */
 function addDeleteButtonHTML(id) {

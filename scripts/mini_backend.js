@@ -1,6 +1,10 @@
 let jsonFromServer = {};
 let BASE_SERVER_URL;
 
+
+/**
+ * sets backend
+ */
 const backend = {
     setItem: function(key, item) {
         jsonFromServer[key] = item;
@@ -68,9 +72,6 @@ function loadJSONFromServerOld() {
 
     });
 }
-
-
-
 
 
 /**
