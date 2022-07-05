@@ -32,7 +32,7 @@ async function createNewTask() { // creat task button
        showLoadingAnimation();
     await saveToLocalStorage();
     window.close();
-    window.open("./index.html");  
+    window.open("index.html");  
     }
    
 }

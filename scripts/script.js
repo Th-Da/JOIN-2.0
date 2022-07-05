@@ -248,11 +248,6 @@ function toggleNavbar() {
     }, 4000)
 }
 
-//opens loginpage
-function logout() {
-    window.location.replace('../welcome.html')
-}
-
 //save to LocalStorage
 async function saveToLocalStorage() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);

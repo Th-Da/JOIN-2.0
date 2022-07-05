@@ -26,7 +26,7 @@ function login() {
 //checks if login data is valid
 function checkIfLoginDataValid(userNameInUserdata, passwordInUserData) {
     if (userNameInUserdata && passwordInUserData === true) {
-        window.location.replace('../index.html')
+        window.location.replace('./index.html')
     } else {
         document.getElementById('wrong-login-data-container').classList.remove('opacity-zero')
     }
