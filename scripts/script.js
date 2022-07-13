@@ -40,7 +40,7 @@ let employees = [
 /**
  * url for backend
  */
-setURL('http://gruppe-260.developerakademie.net/smallest_backend_ever-master');
+setURL('https://gruppe-260.developerakademie.net/smallest_backend_ever-master');
 
 
 /**
