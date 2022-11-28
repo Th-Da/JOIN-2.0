@@ -2,10 +2,23 @@ let jsonFromServer = {};
 let BASE_SERVER_URL;
 
 
+
 /**
  * sets backend
  */
 const backend = {
+    setUser: function(key, item) {
+        jsonFromServer[key] = item;
+        return saveJSONToServer();
+    },
+
+    getUser: function(key) {
+        if (!jsonFromServer[key]) {
+            return null;
+        }
+        return jsonFromServer[key];
+    },    
+
     setItem: function(key, item) {
         jsonFromServer[key] = item;
         return saveJSONToServer();
@@ -21,6 +34,7 @@ const backend = {
         return saveJSONToServer();
     }
 };
+
 window.onload = async function() {
     downloadFromServer();
 }
@@ -28,7 +42,6 @@ window.onload = async function() {
 async function downloadFromServer() {
     let result = await loadJSONFromServer();
     jsonFromServer = JSON.parse(result);
-    console.log('Loaded', result);
 }
 
 function setURL(url) {

@@ -1,4 +1,10 @@
 /**
+ * array with all signed up user
+ */
+let userData = [];
+
+
+/**
  * array with all created tasks
  */
 let tasksToDos = [];
@@ -90,8 +96,8 @@ function fillCardDeatilCollaborators(id) {
     for (let i = 0; i < collaborators.length; i++) {
         const collaborator = collaborators[i];
         document.getElementById('assignee-container').innerHTML += fillCardDeatilCollaboratorsHTML(collaborator)
-        ;
-    } 
+            ;
+    }
 }
 
 
@@ -128,12 +134,12 @@ function createUrgentBoarder(i, container) {
     if (task['currentStatus'] === 'done-list') {
         container.classList.add("done")
     } else if (task['urgency'] === 'High') {
-        container.classList.add("urgent")    
-        } else if (task['urgency'] === 'Intermediate') {
-            container.classList.add("medium") 
-        } else if (task['urgency'] === 'Low') {
-            container.classList.add("low") 
-        }
+        container.classList.add("urgent")
+    } else if (task['urgency'] === 'Intermediate') {
+        container.classList.add("medium")
+    } else if (task['urgency'] === 'Low') {
+        container.classList.add("low")
+    }
 }
 
 
@@ -146,7 +152,7 @@ function createUrgentBoarder(i, container) {
 function fillCardDetailsButtonsContainer(task, id) {
     container = document.getElementById('button-container');
     container.innerHTML = '';
-    if(task['currentStatus'] === 'todo-list') {
+    if (task['currentStatus'] === 'todo-list') {
         container.innerHTML += addCurrentStatusTitleHTML('To Do');
         container.innerHTML += addForwardButtonHTML(id);
         container.innerHTML += addCloseCardDEatilsButtonHTML(id);
@@ -222,7 +228,7 @@ function deleteTask(id) {
  * checks request origin by searchin for specific class
  */
 function checkCurrentHtmlLocationAndUpdateCards() {
-    if(document.getElementById('card-details-container').classList.contains('primary')) {
+    if (document.getElementById('card-details-container').classList.contains('primary')) {
         loadTasksToBoard();
     } else {
         loadTasksToBacklog()
@@ -247,7 +253,16 @@ function toggleNavbar() {
  */
 async function saveToBackend() {
     let tasksToDosAsText = JSON.stringify(tasksToDos);
-   await backend.setItem('tasksToDos', tasksToDosAsText);
+    await backend.setItem('tasksToDos', tasksToDosAsText);
+}
+
+
+/**
+ * saves the user in the backend
+ */
+async function saveUserToBackend() {
+    let userDataAsText = JSON.stringify(userData);
+    await backend.setUser('userData', userDataAsText);
 }
 
 
@@ -256,8 +271,12 @@ async function saveToBackend() {
  */
 function loadFromBackend() {
     let tasksToDosAsText = backend.getItem('tasksToDos');
+    let usersAsText = backend.getUser('userData');
     if (tasksToDosAsText) {
         tasksToDos = JSON.parse(tasksToDosAsText);
+    }
+    if (usersAsText) {
+        userData = JSON.parse(usersAsText);
     }
 }
 
@@ -332,7 +351,7 @@ function addBackButtonHTML(id) {
  * @param {string} title - th etitle string from task element
  * @returns - html code for creating staus title on card details
  */
-function addCurrentStatusTitleHTML(title){
+function addCurrentStatusTitleHTML(title) {
     return /*html*/ `
     <span><b>${title}</b></span>
     `

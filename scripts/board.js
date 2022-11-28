@@ -6,12 +6,36 @@ let currentMouseoverId;    // ---------^^-----------
  * initial load function
  */
 async function initBoard() {
-    await includeHTML();
     await downloadFromServer();
-    loadFromBackend();
-    loadTasksToBoard();
+    if (isLoggedIn()) {
+        await includeHTML();
+        loadFromBackend();
+        loadTasksToBoard();
+    } else {
+        window.location.replace('index.html')
+    }
 }
 
+
+function isLoggedIn() {
+    if (userData.find(({ isLoggedIn }) =>
+        isLoggedIn == true)) {
+    }
+    return true
+}
+
+
+async function logout() {
+    if (userData.find(({ isLoggedIn }) =>
+        isLoggedIn == true)) {
+        userData.forEach(user => {
+            user['isLoggedIn'] = false
+        }); {
+            await saveUserToBackend();
+        }
+    }
+
+}
 
 /**
  * load tasks to board
