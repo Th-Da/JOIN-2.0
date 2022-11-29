@@ -6,20 +6,26 @@ async function initLogin() {
     loadFromBackend();
 }
 
+/* function mySubmit(pressedButton) {
+
+    if (pressedButton === 'login')
+        login();
+    else
+        signUp();
+} */
 
 /**
  * signs up a new user if do not already exists
  */
-async function signUp() {
+function signUp() {
     let userNameInput = document.getElementById('user-name').value.toLowerCase();
     let passwordInput = document.getElementById('user-password').value;
     if (!userExists(userNameInput)) {
         pushNewUserInArray(userNameInput, passwordInput);;
-        await saveUserToBackend();
-        window.location.replace('index.html')
+        saveUserToBackend();
+        window.location.href = 'board.html';
     } else {
         document.getElementById('wrong-login-data-container').classList.remove('opacity-zero')
-
     }
 }
 
@@ -54,6 +60,7 @@ function pushNewUserInArray(userNameInUserData, passwordInUserData) {
  * searches for insert login data in userData array
  */
 function login() {
+    document.getElementsByName
     let userNameInput = document.getElementById('user-name').value.toLowerCase();
     let passwordInput = document.getElementById('user-password').value;
     checkIfLoginDataValid(userNameInput, passwordInput)
@@ -74,7 +81,7 @@ async function checkIfLoginDataValid(userNameInput, passwordInput) {
             user['isLoggedIn'] = true;
         });
         await saveUserToBackend();
-        window.location.replace('./index.html');
+        window.location.replace('./board.html');
     } else {
         document.getElementById('wrong-login-data-container').classList.remove('opacity-zero')
     }

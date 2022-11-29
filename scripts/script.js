@@ -46,17 +46,16 @@ let employees = [
 /**
  * url for backend
  */
-setURL('https://gruppe-260.developerakademie.net/smallest_backend_ever-master');
+setURL('https://join.thomas-danielse.de/smallest_backend_ever');
 
 
 /**
  * initial load function
  */
-async function init() {
-    await includeHTML();
+/* async function init() {
     await downloadFromServer();
     loadFromBackend();
-}
+} */
 
 
 /**
@@ -277,6 +276,19 @@ function loadFromBackend() {
     }
     if (usersAsText) {
         userData = JSON.parse(usersAsText);
+    }
+}
+
+
+async function logout() {
+    if (userData.find(({ isLoggedIn }) =>
+        isLoggedIn == true)) {
+        userData.forEach(user => {
+            user['isLoggedIn'] = false
+        }); {
+            await saveUserToBackend();
+            window.location.href = 'index.html'
+        }
     }
 }
 

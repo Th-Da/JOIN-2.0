@@ -41,7 +41,7 @@ async function createNewTask() { // creat task button
         pushTaskInArray(titles, dueDates, categorys, descriptions, urgencys, date);
         showLoadingAnimation();
         await saveToBackend();
-        window.location.replace("./index.html");
+        window.location.replace("./board.html");
     }
 }
 
